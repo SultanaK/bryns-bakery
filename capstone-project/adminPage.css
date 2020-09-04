@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/* CSS Document */
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1{
+	text-align: center;
+}
+
+ul{
+	display: flex;
+	justify-content: space-around;
+}
+
+li{
+	list-style: none;
+}
+
+li:hover{
+	cursor: pointer;
+	color: blue;
+}
+
+th{
+	padding: 5px;
+}

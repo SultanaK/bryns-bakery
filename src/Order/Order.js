@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
+import UserInfoForm from './UserInfoForm';
 
 export default function Order(){
     const [selected, setSelected] = useState('cake')
-
+    const [formFilled, setFormFilled] = useState(false)
     const changeSelected = e => {
         e.preventDefault();
         return setSelected(e.target.value)
@@ -20,22 +21,8 @@ export default function Order(){
          </select>
     </header>
     <div className='order-form-container'>
-        <div className='user-info'>
-            <label for="first-name">First Name</label>
-            <input type='text' id='first-name' required/>
-
-            <label for='last-name'>Last Name</label>
-            <input type='text' id='last-name' required/>
-
-            <label for='email'>Email</label>
-            <input type='email' id='email' required/>
-
-            <label for='phone-number'>Phone Number</label>
-            <input type='tel' id='phone-number' required/>
-
-            <label for='pickup-date'>Ready By: </label>
-            <input type='date' id='pickup-date' required/>
-        </div>
+        <UserInfoForm setFormFilled={setFormFilled}/>
+        {formFilled && <ProductForm selected={selected} />}
     </div>
 
     </>

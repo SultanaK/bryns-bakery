@@ -8,7 +8,8 @@
 
 header{
 	text-align: left;
-	margin: 10vh;
+	width: 100vw;
+	height: 10vh;
 }
 
 .order-form{
@@ -27,7 +28,6 @@ form{
 legend{
 	font-size: 30px;
 	margin-top: 5vh;
-	margin-bottom: 5vh;
 	border: 1px solid black;
 	border-right: none;
 	border-left: none;
@@ -38,7 +38,11 @@ legend{
 label{
 	font-size: 20px;
 	margin-top: 5vh;
-	margin-bottom: 5vh;
+}
+
+.flex{
+	display: flex;
+	justify-content: space-evenly;
 }
 
 .user-info{

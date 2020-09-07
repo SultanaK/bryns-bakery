@@ -7,6 +7,10 @@ export default function UserInfoForm(props){
         props.setFormFilled(true)
     }
 
+    // function formatDate(d) {
+    //     return `${d.getMonth()+1}/${d.getDate()/${d.getYear()}`
+    //   }
+      
     return(        
 <div className='user-info'>
     <form id='user-info' onSubmit={() => submitUserData()}>
@@ -30,3 +34,8 @@ export default function UserInfoForm(props){
 </div>
 )
 }
+
+//now() return time and date PG, WHERE date >= '2020-09-10' AND date <= '2020-09-15'
+//WHERE date >= now() - '3 days'::INTERVAL
+
+

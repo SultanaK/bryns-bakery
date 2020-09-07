@@ -1,20 +1,65 @@
-import React from 'react'
+import React, {useState} from 'react'
+import ChangeQuantity from './ChangeQuantity';
+
 
 export default function CakeForm(props){
 
-    const submitOrder = () => {
-        console.log(subitted)
+    const submitOrder = (e) => {
+        e.preventDefault();
+       return props.updateOrder(cakeOrder)
     }
-    
+
+    const changeQuantity = e => {
+        e.preventDefault()
+        let quantity
+
+        if(e.target.id === 'plus'){ 
+            quantity = cakeOrder.quantity + 0.5
+
+            return setCakeOrder({...cakeOrder, quantity})
+        }
+
+        if(e.target.id === 'minus'){ 
+            if(cakeOrder.quantity === 0){
+                return null
+            }
+            quantity = cakeOrder.quantity - 0.5
+
+            return setCakeOrder({...cakeOrder, quantity})
+        }
+    }
+
+    const [cakeOrder, setCakeOrder] = useState({
+        type: props.type,
+        quantity: props.type === 'cake' ? null : 0,
+        servingSize: props.type === 'cupcakes' ? null : '',
+        cakeFlavor: '',
+        frostingFlavor: '',
+        frostingColor: '',
+        theme: '',
+        notes: '',
+        cost: 0
+
+    })
+
+    const updateOrder = e => {
+        e.preventDefault();
+        const {id, value} = e.target
+        return setCakeOrder({...cakeOrder, [id]: value})
+    }
+
     return(
-    <form onSubmit={() => submitOrder()} className='cake-order-form'>
-        <legend>{props.type}</legend>
-            
-        <label for='serving-size'>Serving-size</label>
-        <input type='number' id='serving-size' required/>
-    
-        <label for='cake-flavor'>{props.type} Flavor</label>
-        <select value>
+    <form onSubmit={e => submitOrder(e)} className='cake-order-form'>
+        <legend>{props.type.toUpperCase()}</legend>
+
+        {props.type === 'cake' && <label htmlFor='servingSize'>Serving-size</label>}
+        {props.type === 'cake' && <input type='number' id='servingSize' onChange={e => updateOrder(e)} required/>}  
+
+        {props.type === 'cupcakes' && <ChangeQuantity changeQuantity={changeQuantity} quantity={cakeOrder.quantity}/>}
+         
+        <label htmlFor='cakeFlavor'>{props.type.toUpperCase()} Flavor</label>
+        <select id='cakeFlavor' onChange={e => updateOrder(e)} >
+            <option value="">--Please choose an option--</option>
             <option value='chocolate-cake'>Chocolate</option>
             <option value='vanilla-cake'>Vanilla</option>
             <option value='red-velevet-cake'>Red Velvet</option>
@@ -26,8 +71,9 @@ export default function CakeForm(props){
         </select>
     
         <legend>Frosting</legend>
-        <label for='frosting-flavor'>Frosting Flavor</label>
-        <select value='cake-flavor'>
+        <label htmlFor='frostingFlavor'>Frosting Flavor</label>
+        <select id='frostingFlavor' onChange={e => updateOrder(e)}>
+            <option value="">--Please choose an option--</option>
             <option value='chocolate-frosting'>Chocolate</option>
             <option value='vanilla-frosting'>Vanilla</option>
             <option value='cream-cheese-frosting'>Cream Cheese</option>
@@ -38,8 +84,9 @@ export default function CakeForm(props){
     
         </select>
     
-        <label for='frosting-color'>Frosting Color</label>
-        <select id='cake-flavor'>
+        <label htmlFor='frostingColor'>Frosting Color</label>
+        <select id='frostingColor' onChange={e => updateOrder(e)}>
+            <option value="">--Please choose an option--</option>
             <option value='red-frosting'>Red</option>
             <option value='pink-frosting'>Pink</option>
             <option value='blue-frosting'>Blue</option>
@@ -51,8 +98,9 @@ export default function CakeForm(props){
         </select>
     
         <legend>Design</legend>
-        <label for='cake-theme'>Theme</label>
-        <select id='cake-theme'>
+        <label htmlFor='theme'>Theme</label>
+        <select id='theme' onChange={e => updateOrder(e)}>
+            <option value="">--Please choose an option--</option>
             <option value='kid-birthday-theme'>Kids Birthday</option>
             <option value='adult-birthday-theme'>Adult Birdthday</option>
             <option value='wedding-theme'>Wedding</option>
@@ -61,8 +109,8 @@ export default function CakeForm(props){
             <option ivalued='other-theme'>other</option>
         </select>
     
-        <label for='notes'>Notes</label>
-        <textarea name='notes' id='notes' form='cake-order-form' className='text-box'></textarea>
+        <label htmlFor='notes'>Notes</label>
+        <textarea name='notes' id='notes' form='cake-order-form' className='text-box' onChange={e => updateOrder(e)}></textarea>
     
         <input type='submit' id='cake-order-form' className='submit'/>
     </form>

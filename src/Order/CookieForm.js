@@ -1,47 +1,70 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ChangeQuantity from './ChangeQuantity'
 
-export default function CookieForm(){
+export default function CookieForm(props){    
+    const [cookieOrder, setCookieOrder] = useState({ 
+            type: 'cookies',
+            quantity: 0,
+            cookieFlavor: '',
+            theme: '',   
+            cost: 0
+    })
 
+    const submitOrder = (e) => {
+        e.preventDefault()
+        props.updateOrder(cookieOrder)
+    }
+    
+    const changeQuantity = e => {
+        e.preventDefault()
+        let quantity
+
+        if(e.target.id === 'plus'){ 
+            quantity = cookieOrder.quantity + 0.5
+
+            return setCookieOrder({...cookieOrder, quantity})
+        }
+
+        if(e.target.id === 'minus'){ 
+            if(cookieOrder.quantity === 0){
+                return null
+            }
+            quantity = cookieOrder.quantity - 0.5
+
+            return setCookieOrder({...cookieOrder, quantity})
+        }
+    }
+    
+    const updateOrder = e => {
+        e.preventDefault();
+        const {id, value} = e.target
+       return setCookieOrder({...cookieOrder, [id]: value})
+    }
+    
     return(
-     <form className='cookie-order-form'>
+     <form onSubmit={e => submitOrder(e)} className='cookie-order-form'>
          <legend>Cookie</legend>
         
-         <label for='serving-size'>Serving-size</label>
-         <input type='number' id='serving-size' required/>
-    
-         <label for='cookie-flavor'>Cookie Flavor</label>
-         <input type='text' id='cookie-flavor'/>
-    
-         <label for='cookie-design'>Design</label>
-         <input type='text' id='cookie-design'>
-    
-         <input type='submit' id='cookie-order-form'/>
-    
-         <label for='frosting-color'>Frosting Color</label>
-         <select id='cake-flavor'>
-             <option id='red-frosting'>Red</option>
-             <option id='pink-frosting'>Pink</option>
-             <option id='blue-frosting'>Blue</option>
-             <option id='yellow-frosting'>Yellow</option>
-             <option id='green-frosting'>Green</option>
-             <option id='purple-frosting'>Purple</option>
-             <option id='german-chocolate-cake'>other</option>
-    
-         </select>
+        <ChangeQuantity changeQuantity={changeQuantity} quantity={cookieOrder.quantity}/>
+
+         <label htmlFor='cookieFlavor'>Cookie Flavor</label>
+         <input type='text' id='cookieFlavor'onChange={e => updateOrder(e)}/>
     
          <legend>Design</legend>
-         <label for='cake-theme'>Theme</label>
-         <select id='cake-theme'>
-             <option id='kid-birthday-theme'>Kids Birthday</option>
-             <option id='adult-birthday-theme'>Adult Birdthday</option>
-             <option id='wedding-theme'>Wedding</option>
-             <option id='bachelor-theme'>Bachelor/Bachelorette</option>
-             <option id='baby-shower-theme'>Baby Shower</option>
-             <option id='other-theme'>other</option>
+            
+         <label htmlFor='theme'>Theme</label>
+         <select id='theme' onChange={e => updateOrder(e)}>
+             <option value="">--Please choose an option--</option>
+             <option value='kid-birthday-theme'>Kids Birthday</option>
+             <option value='adult-birthday-theme'>Adult Birdthday</option>
+             <option value='wedding-theme'>Wedding</option>
+             <option value='bachelor-theme'>Bachelor/Bachelorette</option>
+             <option value='baby-shower-theme'>Baby Shower</option>
+             <option value='other-theme'>other</option>
          </select>
     
-         <label for='notes'>Notes</label>
-         <textarea name='notes' id='notes' form='cookie-order-form' className='text-box'></textarea>
+         <label htmlFor='notes'>Notes</label>
+         <textarea name='notes' id='notes' form='cookie-order-form' className='text-box' onChange={e => updateOrder(e)}></textarea>
     
          <input type='submit' id='cake-order-form' className='submit'/>
      </form>

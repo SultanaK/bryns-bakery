@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import OrderContext from '../Context/OrderContext'
 
-export default function ShoppingCart(props){
-    // const [order, setOrder] = useState()
-    console.log(props)
-    let orderArray = Object.keys(props.order)
+export default function ShoppingCart(){
+    const context = useContext(OrderContext)
+
+    let orderArray = Object.keys(context.order)
+    const removeItem = (item) => {
+        console.log(item)
+    }
 
     const items = () => {
-    return orderArray.map(x => <li><p>{props.order[x].type}</p> {props.order[x].type === 'cake' ? <p>1</p> : <p>{props.order[x].quantity}/doz</p>} <p>${props.order[x].cost}</p></li>)
+    return orderArray.map(x => <li><p>{context.order[x].type}</p> {context.order[x].type === 'cake' ? <p>1</p> : <p>{context.order[x].quantity}/doz</p>} <p>${context.order[x].cost}</p> <button onClick={() => removeItem(x)}> X </button></li>)
     }
 
 

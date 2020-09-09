@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {BrowserRouter} from 'react-router-dom'
+import OrderDB from './Order/OrderDB'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
+  <OrderDB>
     <App />
-  </React.StrictMode>,
+  </OrderDB>
+  </BrowserRouter>,
   document.getElementById('root')
 );

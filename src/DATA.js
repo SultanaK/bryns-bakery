@@ -316,7 +316,150 @@ const DATA = {
         },
 
 
+    ],
+    cakeFlavors: [
+        {
+            key: '',
+            name: '--Please Choose One--'
+        },
+        {
+            key: 'chocolate-cake', 
+            name: 'Chocolate'
+        },
+        {
+            key: 'vanilla-cake', 
+            name: 'Vanilla'
+        },        
+        {
+            key: 'strawberry-cake', 
+            name: 'Strawberry'
+        },
+        {
+            key: 'red-velvet-cake', 
+            name: 'Red Velvet'
+        },        
+        {
+            key: 'lemon-cake', 
+            name: 'Lemon'
+        },        
+        {
+            key: 'german-chocolate-cake', 
+            name: 'German Chocolate'
+        },
+        {
+            key: 'other',
+            name: 'other'
+        }
+
+
+
+
+    ],
+    frostingFlavors: [
+        {
+            key: '',
+            name: '--Please Choose One--'
+        },
+        {
+            key: 'frosting-chocolate',
+            name: 'Chocolate',
+        },        
+        {
+            key: 'frosting-vanilla',
+            name: 'Vanilla',
+        },
+        {
+            key: 'frosting-strawberry',
+            name: 'Strawberry',
+        },
+        {
+            key: 'frosting-cream-cheese',
+            name: 'Cream Cheese',
+        },
+        {
+            key: 'frosting-lemon',
+            name: 'Lemon',
+        },
+        {
+            key: 'frosting-buttermilk',
+            name: 'Buttermilk',
+        },
+        {
+            key: 'other',
+            name: 'other',
+        },
+
+    ],
+    themes: [
+        {
+            key: '',
+            name: '--Please Choose One--'
+        },
+        {
+            key: 'adult-birthday',
+            name: 'Adult Birthday',
+        },
+        {
+            key: 'wedding',
+            name: 'Wedding',
+        },
+        {
+            key: 'bachelor',
+            name: 'Bachelor/Bachelorette',
+        },
+        {
+            key: 'baby-shower',
+            name: 'Baby Shower',
+        },
+        {
+            key: 'easter',
+            name: 'Easter',
+        },
+        {
+            key: 'christmas',
+            name: 'Christmas',
+        },
+        {
+            key: 'other',
+            name: 'other',
+        },
+
+    ],
+    colors: [
+        {
+            key: '',
+            name: '--Please Choose One--',
+        },
+        {
+            key: 'red',
+            name: 'Red'
+        },
+        {
+            key: 'yellow',
+            name: 'Yellow'
+        },
+        {
+            key: 'blue',
+            name: 'Blue'
+        },
+        {
+            key: 'green',
+            name: 'Green'
+        },
+        {
+            key: 'purple',
+            name: 'Purple'
+        },
+        {
+            key: 'pink',
+            name: 'Pink'
+        },
+        {
+            key: 'white',
+            name: 'White'
+        }
     ]
+    //add themes, flavors, select values
 }
 
 export default DATA;

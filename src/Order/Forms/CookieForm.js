@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
-import ChangeQuantity from './ChangeQuantity'
+import React, { useState, useContext } from 'react'
+import ChangeQuantity from '../ChangeQuantity'
+import DATA from '../../DATA'
+import {Link} from 'react-router-dom'
+import OrderContext from '../../Context/OrderContext'
 
-export default function CookieForm(props){    
+export default function CookieForm(props){ 
+
+    const context = useContext(OrderContext)  
+
     const [cookieOrder, setCookieOrder] = useState({ 
             type: 'cookies',
             quantity: 0,
@@ -12,17 +18,16 @@ export default function CookieForm(props){
 
     const submitOrder = (e) => {
         e.preventDefault()
-        props.updateOrder(cookieOrder)
+        return context.updateOrder(cookieOrder)
     }
     
     const changeQuantity = e => {
         e.preventDefault()
         let quantity
+        let cost
 
         if(e.target.id === 'plus'){ 
             quantity = cookieOrder.quantity + 0.5
-
-            return setCookieOrder({...cookieOrder, quantity})
         }
 
         if(e.target.id === 'minus'){ 
@@ -30,9 +35,11 @@ export default function CookieForm(props){
                 return null
             }
             quantity = cookieOrder.quantity - 0.5
-
-            return setCookieOrder({...cookieOrder, quantity})
         }
+
+        cost = quantity * 10
+        return setCookieOrder({...cookieOrder, quantity, cost})
+
     }
     
     const updateOrder = e => {
@@ -41,8 +48,11 @@ export default function CookieForm(props){
        return setCookieOrder({...cookieOrder, [id]: value})
     }
     
-    return(
+    console.log(context)
+   return(
      <form onSubmit={e => submitOrder(e)} className='cookie-order-form'>
+        <Link to='/order'>Back</Link>
+
          <legend>Cookie</legend>
         
         <ChangeQuantity changeQuantity={changeQuantity} quantity={cookieOrder.quantity}/>
@@ -54,13 +64,7 @@ export default function CookieForm(props){
             
          <label htmlFor='theme'>Theme</label>
          <select id='theme' onChange={e => updateOrder(e)}>
-             <option value="">--Please choose an option--</option>
-             <option value='kid-birthday-theme'>Kids Birthday</option>
-             <option value='adult-birthday-theme'>Adult Birdthday</option>
-             <option value='wedding-theme'>Wedding</option>
-             <option value='bachelor-theme'>Bachelor/Bachelorette</option>
-             <option value='baby-shower-theme'>Baby Shower</option>
-             <option value='other-theme'>other</option>
+            {DATA.themes.map((x, i) => <option value={x.key}>{x.name}</option>)}
          </select>
     
          <label htmlFor='notes'>Notes</label>

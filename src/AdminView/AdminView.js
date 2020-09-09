@@ -29,7 +29,6 @@ export default function AdminView(){
         }
     }
 
-    console.log(orders)
     return(
         <>
         <nav>

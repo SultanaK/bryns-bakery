@@ -3,6 +3,7 @@ import ChangeQuantity from '../ChangeQuantity';
 import DATA from '../../DATA'
 import {Link} from 'react-router-dom'
 import OrderContext from '../../Context/OrderContext'
+import ConfirmSubmit from '../ConfirmSubmit'
 
 export default function CakeForm(props){
     const context = useContext(OrderContext)
@@ -20,10 +21,10 @@ export default function CakeForm(props){
 
     })
 
-    const submitOrder = (e) => {
-        e.preventDefault();
-        return context.updateOrder(cakeOrder)
-    }
+    // const submitOrder = (e) => {
+    //     e.preventDefault();
+    //     return context.updateOrder(cakeOrder)
+    // }
 
     const changeQuantity = e => {
         e.preventDefault()
@@ -50,9 +51,16 @@ export default function CakeForm(props){
         return setCakeOrder({...cakeOrder, [id]: value})
     }
 
+    const confirmSubmit = e => {
+        e.preventDefault()
+        return context.changeModal()
+    }
+
     return(
-    
-    <form onSubmit={e => submitOrder(e)} className='cake-order-form'>
+    <>
+    {context.modal &&  <ConfirmSubmit order={cakeOrder}/>}
+
+    <form onSubmit={e => confirmSubmit(e) } className='cake-order-form'>
         <Link to='/order'>Back</Link>
 
         <legend>{props.type.toUpperCase()}</legend>
@@ -89,6 +97,7 @@ export default function CakeForm(props){
     
         <input type='submit' id='cake-order-form' className='submit'/>
     </form>
+    </>
     )
 }    
 

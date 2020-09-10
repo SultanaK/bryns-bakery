@@ -1,22 +1,26 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import './loginPage.css'
+import OrderContext from '../Context/OrderContext'
 
-export default function Login(){
+export default function Login(props){
+	const context = useContext(OrderContext)
+	const [creds, setCreds] = useState({})
 
-    const submitCredentials = () => {
-        console.log('submitted')
+    const submitCredentials = (e) => {
+		e.preventDefault()
+		return context.compareCreds(creds) === true ? props.history.push('/adminView') : null
     }
-    
+	
     return(
         <>
-	<form onSubmit={() => submitCredentials()} id='admin-login'>
+	<form onSubmit={(e) => submitCredentials(e)} id='admin-login'>
 		<h1>Admin Login</h1>
 
-		<label for='email'>Email</label>
-		<input type='email' name='email' id='email' required/>
+		<label htmlFor='username'>Username</label>
+		<input type='text' name='username' id='username' onChange={e => setCreds({...creds, [e.target.id]: e.target.value})} required/>
 
-		<label for='password'>Password</label>
-		<input type='password' name='password' id='password' required/>
+		<label htmlFor='password'>Password</label>
+		<input type='password' name='password' id='password' onChange={e => setCreds({...creds, [e.target.id]: e.target.value})} required/>
 		<input type='submit' id='admin-login' />
 
 	</form>

@@ -13,7 +13,6 @@ export default function Carousel(){
         return count === 0 ? setCount(imgArr.length - 1) : setCount(count - 1)
     }
 
-    console.log(count)
     return (
         <div className='carousel'>
         <button onClick={() => prev()}>prev</button>

@@ -1,18 +1,23 @@
 import React, {useContext} from 'react'
 import OrderContext from '../Context/OrderContext'
+import {Link} from 'react-router-dom'
 
 export default function ShoppingCart(){
     const context = useContext(OrderContext)
 
     let orderArray = Object.keys(context.order)
-    const removeItem = (item) => {
-        console.log(item)
-    }
 
     const items = () => {
-    return orderArray.map(x => <li><p>{context.order[x].type}</p> {context.order[x].type === 'cake' ? <p>1</p> : <p>{context.order[x].quantity}/doz</p>} <p>${context.order[x].cost}</p> <button onClick={() => removeItem(x)}> X </button></li>)
+        return orderArray.map(x => <li><p>{context.order[x].type}</p> {context.order[x].type === 'cake' ? <p>1</p> : <p>{context.order[x].quantity}/doz</p>} <p>${context.order[x].cost}</p> <button onClick={() => context.deleteItem(x)}> X </button></li>)
     }
 
+    //NEED HELP WITH THIS FUNCTION 
+    const calculateTotal = () => {
+       return orderArray.map(x => {
+            let total = 0;
+            return total = Number(context.order[x].cost) + Number(total)     
+        })
+    }
 
     return(
         <>
@@ -26,11 +31,12 @@ export default function ShoppingCart(){
             <p>PickUp Date</p>
             <h3>Expected Total</h3>
             <p>*Pay At Pickup*</p>
-            <h4>$50</h4>
+            <h4>{calculateTotal()}</h4>
         
-        <button>Place Order</button>
+        <Link to='/order/userform'>Place Order</Link>
+        <button>Edit Order</button>
      </section>
 
-        </>
+    </>
     )
 }

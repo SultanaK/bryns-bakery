@@ -3,11 +3,11 @@ import ChangeQuantity from '../ChangeQuantity'
 import DATA from '../../DATA'
 import {Link} from 'react-router-dom'
 import OrderContext from '../../Context/OrderContext'
+import ConfirmSubmit from '../ConfirmSubmit'
 
 export default function CookieForm(props){ 
 
     const context = useContext(OrderContext)  
-
     const [cookieOrder, setCookieOrder] = useState({ 
             type: 'cookies',
             quantity: 0,
@@ -15,11 +15,6 @@ export default function CookieForm(props){
             theme: '',   
             cost: 0
     })
-
-    const submitOrder = (e) => {
-        e.preventDefault()
-        return context.updateOrder(cookieOrder)
-    }
     
     const changeQuantity = e => {
         e.preventDefault()
@@ -48,9 +43,15 @@ export default function CookieForm(props){
        return setCookieOrder({...cookieOrder, [id]: value})
     }
     
-    console.log(context)
+    const confirmSubmit = e => {
+        e.preventDefault()
+        return context.changeModal()
+    }
+    
    return(
-     <form onSubmit={e => submitOrder(e)} className='cookie-order-form'>
+    <>
+    {context.modal &&  <ConfirmSubmit order={cookieOrder}/>}
+     <form onSubmit={e => confirmSubmit(e)} className='cookie-order-form'>
         <Link to='/order'>Back</Link>
 
          <legend>Cookie</legend>
@@ -72,6 +73,7 @@ export default function CookieForm(props){
     
          <input type='submit' id='cake-order-form' className='submit'/>
      </form>
+    </>
     
     )
 }

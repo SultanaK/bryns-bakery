@@ -1,13 +1,17 @@
 import React, {useContext} from 'react'
 import OrderContext from '../../Context/OrderContext'
+import ServiceFunctions from '../../services/ServiceFunctions'
 
 export default function UserInfoForm(props){
     const context = useContext(OrderContext)
-    let user = {}
 
-    const submitUserData = (e) => {
+    const submitOrder = (e) => {
         e.preventDefault()
-        context.updateUserInfo(user)
+        const user = context.user
+        const order = context.order
+        const items = context.items
+        ServiceFunctions.submitOrder(order, items, user)
+        context.clearOrder()
         return props.history.push('/order/confirmation')
     }
 
@@ -15,29 +19,23 @@ export default function UserInfoForm(props){
     //     return `${d.getMonth()+1}/${d.getDate()/${d.getYear()}`
     //   }
 
-    const updateUser = e => {
-        e.preventDefault()
-        const {id, value} = e.target
-        return user = {...user, [id]: value}
-    }
-
     return(        
 <div className='user-info'>
-    <form id='user-info' onSubmit={(e) => submitUserData(e)}>
+    <form id='user-info' onSubmit={(e) => submitOrder(e)}>
         <label htmlFor="first-name">First Name</label>
-        <input type='text' id='first-name' onChange={e => updateUser(e)} required/>
+        <input type='text' id='first-name' onChange={e => context.updateUser(e)} required/>
 
         <label htmlFor='last-name'>Last Name</label>
-        <input type='text' id='last-name' onChange={e => updateUser(e)} required/>
+        <input type='text' id='last-name' onChange={e => context.updateUser(e)} required/>
 
         <label htmlFor='email'>Email</label>
-        <input type='email' id='email' onChange={e => updateUser(e)} required/>
+        <input type='email' id='email' onChange={e => context.updateUser(e)} required/>
 
         <label htmlFor='phone-number'>Phone Number</label>
-        <input type='tel' id='phone-number' onChange={e => updateUser(e)} required/>
+        <input type='tel' id='phone-number' onChange={e => context.updateUser(e)} required/>
 
         <label htmlFor='pickup-date'>Ready By: </label>
-        <input type='date' id='pickup-date' onChange={e => updateUser(e)} required/>
+        <input type='date' id='pickup-date' onChange={e => context.updateUser(e)} required/>
 
         <input type='submit' id='user-info' className='submit' />
     </form>

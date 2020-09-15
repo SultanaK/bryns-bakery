@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import FormContext from '../Context/FormContext'
 
-export default function ChangeQuantity(props){
+export default function ChangeQuantity(){
+    const context = useContext(FormContext)
+
     return(
         <>
-                 <label htmlFor='quantity'>Quantity</label>
+        <label htmlFor='quantity'>Quantity</label>
          <div id='quantity' className='flex'>
-            <button id='minus' onClick={(e) => props.changeQuantity(e)}>-</button>
-                <p>{props.quantity}/dozen</p>
-            <button id='plus' onClick={(e) => props.changeQuantity(e)}>+</button>
+            <button id='minus' onClick={(e) => context.changeQuantity(e)}>-</button>
+                <p>{context.item.order_specs.quantity === 0 ? 0 : context.item.order_specs.quantity}/dozen</p>
+            <button id='plus' onClick={(e) => context.changeQuantity(e)}>+</button>
          </div>
 
         </>

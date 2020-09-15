@@ -1,32 +1,44 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useContext } from 'react'
 import './orderPage.css'
+import FormContext from '../Context/FormContext'
+import DATA from '../DATA'
 
-
-export default function Order(){
-        
+export default function Order(props){
+    const context = useContext(FormContext)
     return(
     <>
-    <header>
+    <section className='order'>
         <h1>Order</h1> 
-    </header>
+    </section>
 
     <div className='select-product-type'>
-        <div className='product'>
-            <Link to='/order/cake'>Cakes</Link>
-        </div>
-        <div className='product'>
-            <Link to='/order/cupcakes'>Cupcakes</Link>
-        </div>
-        <div className='product'>
-            <Link to='/order/cookies'>Cookies</Link>
-        </div>
+        {DATA.type.map((x, i) => {
+            return <OrderChoices 
+                key={i}
+                clearOrder={context.clearOrder}
+                updateType={context.updateType}
+                history={props.history}
+                type={x}
+            />
+        })}
     </div>
     </>
     )
 }
 
-/* <div className='order-form'>
-    {selected && <Form selected={selected}/>}
-</div> */
+const OrderChoices = (props) => {
+    
+    const orderChoice = () => {
+        props.clearOrder()
+        props.updateType(props.type.name)   
+        return props.history.push(props.type.link)
+    }
+
+    const classType= 'product ' + props.type.name
+    return(
+        <div className={classType}>
+            <button onClick={e => orderChoice(e)} id={props.type.name}>{props.type.name}</button>
+        </div>
+    )
+}
     

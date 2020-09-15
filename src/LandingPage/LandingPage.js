@@ -12,9 +12,9 @@ export default function LandingPage(){
     </section>
 
     <section className='window-height description'>
-        <h2>About the Goods</h2>
         <img src={logo} alt='logo' />
-        <p>Description about Business</p>
+        <h1>About the Goods</h1>
+        <p>Home </p>
     </section>
 
     <footer>

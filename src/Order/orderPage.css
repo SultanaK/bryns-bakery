@@ -16,6 +16,9 @@ header{
 	display: flex;
 }
 
+.order{
+	text-align: center;
+}
 .product{
 	display: flex;
 	flex-direction: column;
@@ -24,6 +27,30 @@ header{
 	border: 1px solid black;
 	height: 33vh;
 	width: 100vw;
+}
+
+.Cake{
+	background-image: url("../images/cake-wedding.jpg");
+	background-position: right 50% top 8%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.Cookies{
+	background-image: url("../images/cookies-western.jpg");
+	background-position: right 50% top 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+}
+
+.Cupcakes{
+	background-image: url("../images/cc-sunflower.jpg");
+	background-position: right 50% top 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+
 }
 
 form{

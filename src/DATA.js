@@ -57,20 +57,20 @@ const DATA = {
          alt: 'wedding cake'
         },
         {
-        src: flowerccs,
-        alt: 'flower cupcakes'
+            src: weddingCookies2,
+            alt: 'wedding cookies',
         },
         {
         src: sunflowerccs,
         alt: 'sunflower cupcakes'
         },
         {
-        src: pinkFlower,
-        alt: 'flower cookies'
+            src: pinkArrow,
+            alt: 'pink arrow',
         },
         {
-        src: strawberrycake,
-        alt: 'strawberry cake'
+            src: western,
+            alt: 'western',
         },        
     ],
     products: [
@@ -315,6 +315,24 @@ const DATA = {
             completed: true
         },
 
+
+    ],
+    type: [
+        {
+            key: 'type',
+            name: 'Cake',
+            link: '/order/cake'
+        },
+        {
+            key: 'type',
+            name: 'Cupcakes',
+            link: '/order/cupcakes'
+        },
+        {
+            key: 'type',
+            name: 'Cookies',
+            link: '/order/cookies'
+        },
 
     ],
     cakeFlavors: [

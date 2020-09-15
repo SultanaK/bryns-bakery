@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import DATA from '../DATA';
 import Table from './Table'
+import config from '../config/config'
 
 export default function AdminView(){
     const [orders, setOrders] = useState(DATA.orders)
     const [selected, setSelected] = useState('New')
+
     const filterBy = (type) => {
         
         if(type === 'all'){

@@ -1,20 +1,20 @@
 import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
-import OrderContext from '../Context/OrderContext'
+import FormContext from '../Context/FormContext'
 
-export default function ConfirmSubmit(props){
-    const context = useContext(OrderContext)
+export default function ConfirmSubmit(){
+    const context = useContext(FormContext)
 
-    const submitOrder = (order) => {
+    const checkOut = () => {
         context.changeModal()
-        return context.updateOrder(order)
+        return context.updateCart()
     }
 
     return(
         <div className='confirm-submit'>
             <p>Would you like to keep shopping?</p>
-            <Link onClick={() => submitOrder(props.order)} to='/order'>Yes</Link>
-            <Link onClick={() => submitOrder(props.order)} to='/order/cart'>No, Checkout</Link>
+            <Link onClick={() => checkOut()} to='/order'>Yes</Link>
+            <Link onClick={() => checkOut()} to='/order/cart'>No, Checkout</Link>
         </div>
     )
 }

@@ -24,7 +24,7 @@ export default function Products(){
       
 
     return(
-        <>
+        <div className='goodies'>
         <section className="Modal">
 		<h1>Filter: </h1>
 		<select value={selectedProduct} onChange={e => changeSelected(e)}>
@@ -42,7 +42,7 @@ export default function Products(){
     {productsArray.filter(pFilter[selectedProduct])
         .map((x, i) => <ProductGrid product={x} key={i} />)}
     </section>
-    </>
+    </div>
    )
 }
 

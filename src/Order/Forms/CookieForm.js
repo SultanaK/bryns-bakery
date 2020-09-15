@@ -1,47 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import ChangeQuantity from '../ChangeQuantity'
 import DATA from '../../DATA'
 import {Link} from 'react-router-dom'
-import OrderContext from '../../Context/OrderContext'
+import FormContext from '../../Context/FormContext'
 import ConfirmSubmit from '../ConfirmSubmit'
 
-export default function CookieForm(props){ 
-
-    const context = useContext(OrderContext)  
-    const [cookieOrder, setCookieOrder] = useState({ 
-            type: 'cookies',
-            quantity: 0,
-            cookieFlavor: '',
-            theme: '',   
-            cost: 0
-    })
-    
-    const changeQuantity = e => {
-        e.preventDefault()
-        let quantity
-        let cost
-
-        if(e.target.id === 'plus'){ 
-            quantity = cookieOrder.quantity + 0.5
-        }
-
-        if(e.target.id === 'minus'){ 
-            if(cookieOrder.quantity === 0){
-                return null
-            }
-            quantity = cookieOrder.quantity - 0.5
-        }
-
-        cost = quantity * 10
-        return setCookieOrder({...cookieOrder, quantity, cost})
-
-    }
-    
-    const updateOrder = e => {
-        e.preventDefault();
-        const {id, value} = e.target
-       return setCookieOrder({...cookieOrder, [id]: value})
-    }
+export default function CookieForm(){ 
+    const context = useContext(FormContext)
     
     const confirmSubmit = e => {
         e.preventDefault()
@@ -50,26 +15,26 @@ export default function CookieForm(props){
     
    return(
     <>
-    {context.modal &&  <ConfirmSubmit order={cookieOrder}/>}
+    {context.modal &&  <ConfirmSubmit />}
      <form onSubmit={e => confirmSubmit(e)} className='cookie-order-form'>
-        <Link to='/order'>Back</Link>
+        <Link onClick={() => context.clearOrder()} to='/order'>Back</Link>
 
          <legend>Cookie</legend>
         
-        <ChangeQuantity changeQuantity={changeQuantity} quantity={cookieOrder.quantity}/>
+        <ChangeQuantity />
 
          <label htmlFor='cookieFlavor'>Cookie Flavor</label>
-         <input type='text' id='cookieFlavor'onChange={e => updateOrder(e)}/>
+         <input type='text' id='cookieFlavor'onChange={e => context.updateItemSpecs(e)}/>
     
          <legend>Design</legend>
             
          <label htmlFor='theme'>Theme</label>
-         <select id='theme' onChange={e => updateOrder(e)}>
+         <select id='theme' onChange={e => context.updateItem(e)}>
             {DATA.themes.map((x, i) => <option value={x.key}>{x.name}</option>)}
          </select>
     
          <label htmlFor='notes'>Notes</label>
-         <textarea name='notes' id='notes' form='cookie-order-form' className='text-box' onChange={e => updateOrder(e)}></textarea>
+         <textarea name='notes' id='notes' form='cookie-order-form' className='text-box' onChange={e => context.updateItem(e)}></textarea>
     
          <input type='submit' id='cake-order-form' className='submit'/>
      </form>

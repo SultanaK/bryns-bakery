@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import DATA from '../DATA'
+import arrow from '../images/nextAndprevArrow.png'
 
 export default function Carousel(){
     const imgArr = DATA.slideshow;
@@ -15,9 +16,9 @@ export default function Carousel(){
 
     return (
         <div className='carousel'>
-        <button onClick={() => prev()}>prev</button>
-        <img src={imgArr[count].src} alt={imgArr[count].alt} />
-        <button onClick={() => next()}>next</button>
+        <button onClick={() => prev()}><img src={arrow} alt='next' className='prev'/></button>
+        <img className='carousel-img' src={imgArr[count].src} alt={imgArr[count].alt} />
+        <button onClick={() => next()}><img src={arrow} alt='next' className='next'/></button>
         </div>
     )
 }

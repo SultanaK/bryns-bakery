@@ -9,16 +9,19 @@
 .Modal{
 	width: 100vw;
 	height: 10vh;
-	border: 1px solid black;
 }
 
+.goodies{
+	background-color: #fbddd5;
+}
 .grid{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+	column-gap: 10%;
 	grid-template-rows: auto;
 }
 .item img{
-	border: 1px solid black;
-	height: 50vh;
-	width: 33vw;
+	height: 30vh;
+	width: 20vw;
+
 }

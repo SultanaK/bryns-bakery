@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import OrderContext from '../Context/OrderContext'
-import ServiceFunctions from '../services/ServiceFunctions'
 
 export default function OrderDB(props){
     const [order, setOrder] = useState({

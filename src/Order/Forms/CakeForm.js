@@ -19,7 +19,7 @@ export default function CakeForm(props){
     <>
     {context.modal &&  <ConfirmSubmit />}
 
-    <form onSubmit={e => confirmSubmit(e) } className='cake-order-form'>
+    <form onSubmit={e => confirmSubmit(e) } className='order-form'>
         <Link to='/order'>Back</Link>
 
         <legend>{props.type.toUpperCase()}</legend>

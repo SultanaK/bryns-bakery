@@ -1,15 +1,10 @@
 import React, { useContext } from 'react'
-import './orderPage.css'
 import FormContext from '../Context/FormContext'
 import DATA from '../DATA'
 
 export default function Order(props){
     const context = useContext(FormContext)
     return(
-    <>
-    <section className='order'>
-        <h1>Order</h1> 
-    </section>
 
     <div className='select-product-type'>
         {DATA.type.map((x, i) => {
@@ -22,7 +17,6 @@ export default function Order(props){
             />
         })}
     </div>
-    </>
     )
 }
 
@@ -36,9 +30,12 @@ const OrderChoices = (props) => {
 
     const classType= 'product ' + props.type.name
     return(
-        <div className={classType}>
-            <button onClick={e => orderChoice(e)} id={props.type.name}>{props.type.name}</button>
-        </div>
+        
+            <button className={classType} onClick={e => orderChoice(e)} id={props.type.name}>
+                <div className='order-option'>
+                {props.type.name}
+               </div>     
+            </button>
     )
 }
     

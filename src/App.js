@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 import LandingPage from './LandingPage/LandingPage';
 import AdminView from './AdminView/AdminView';
 import Login from './AdminLogin/Login'

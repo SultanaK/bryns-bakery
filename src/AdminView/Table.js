@@ -3,16 +3,29 @@ import ServiceFunctions from '../services/ServiceFunctions'
 export default function Table(props) {
 
     const orderValues = Object.keys(props.order)
-    const exposeOrder = (id) => {
-        ServiceFunctions.getItemsInAnOrder(id)
-        .then(data => console.log(data))
+    
+    const evaluateValue = (x) => {
+        if(props.order[x] === true){
+            return 'true'
+        }
+        if(props.order[x] === false){
+            return 'false'
+        }
+        if(x === 'readydate'){
+            var strDate = props.order[x];
+            return strDate.substring(0, 10);
+        }
+
+        return props.order[x]
     }
     return(
         
-        <tr onClick={() => exposeOrder(props.order.id)}>
+        <tr onClick={() => props.exposeOrder(props.order.id)}>
             {orderValues.map((x, i) => {
                 return (
-                    <TableBody key={i} value={props.order[x] === false ? 'false' : props.order[x]}/>
+                    <TableBody key={i} 
+                    value={evaluateValue(x)}
+                    />
                 )
             })}
             <button onClick={() => ServiceFunctions.complete(props.order.id)}>completed</button>

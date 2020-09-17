@@ -1,17 +1,27 @@
 import React, {useState} from 'react'
 import Table from './Table'
 import ServiceFunctions from '../services/ServiceFunctions'
+import OrderDetails from './OrderDetails'
 
 export default function AdminView(){
     const [order, setOrder] = useState([0])
     const [selected, setSelected] = useState('all')
+    const [items, setItems] = useState([0])
+
+    const exposeOrder = (id) => {
+        ServiceFunctions.getItemsInAnOrder(id)
+        .then(data => setItems(data))
+    }
 
     const table = (type) => {
         setSelected(type)
 
         if(type === 'new'){
            ServiceFunctions.getAllOrders()
-           .then(res => setOrder(res))
+           .then(res => {
+               console.log(res)
+              return setOrder(res)
+            })
         }
         if(type === 'unfinished'){
             ServiceFunctions.getUnfinished()
@@ -23,7 +33,6 @@ export default function AdminView(){
             .then(data => data.length === 0 ? setOrder([0]) : setOrder(data))
         }
     }
-    console.log(order[0])
     return(
         <>
         <nav>
@@ -49,10 +58,12 @@ export default function AdminView(){
             </thead>
             <tbody>
                 {order.map((x, i) => {
-                    return <Table key={i} order={x} />
+                    return <Table key={i} exposeOrder={exposeOrder} order={x} />
                 })}
             </tbody>
         </table>
+        <h1>Items in Order</h1>
+        {items.map((x, i) => <OrderDetails key={i} item={x} />)}
         </>
     )
 }

@@ -1,7 +1,7 @@
 import config from '../config/config'
 
 const ServiceFunctions = {
-    submitOrder(ord, items, userInfo){
+   submitOrder(ord, items, userInfo){
         const url = config.API_ENDPOINT + '/orders'
 
         const user = {
@@ -30,16 +30,17 @@ const ServiceFunctions = {
             }
         }
 
-        fetch(url, options)
+    const submitted = fetch(url, options)
         .then(res => {
             if(!res.ok){
                 throw new Error("something went wrong")
             }
             return res.json();
         })
-        .then(data => console.log(data))
+        .then(data => data)
         .catch(err => "something went wrong");
-            
+         
+    return submitted
     },
     getAllOrders(){ 
         const url = config.API_ENDPOINT + '/orders'
@@ -98,7 +99,7 @@ const ServiceFunctions = {
 
             return res.json()
         })
-        .then(data => console.log(data))
+        .then(data => data)
         .catch(err => 'something went wrong')
 
         return items

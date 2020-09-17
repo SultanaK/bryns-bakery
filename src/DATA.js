@@ -14,9 +14,10 @@ import flowerBasket from './images/cake-flower-basket.jpg'
 import halloweenCake from './images/cake-halloween.jpg'
 import jungleCake from './images/cake-jungle.jpg'
 import kidBDay from './images/cake-landon-birthday.jpg'
+import cocoCake from './images/cake-coco-disney.jpg'
+import bananaCake from './images/cake-banana-cake.jpg'
 
 //cupcakes
-import flowerccs from './images/cc-flowers.jpg'
 import sunflowerccs from './images/cc-sunflower.jpg'
 import fourthOfJuly from './images/cc-fourth-of-july.jpg'
 import fourthOfJuly2 from './images/cc-fourth-of-july-2.jpg'
@@ -46,12 +47,21 @@ import valentines from './images/cookies-valentines.jpg'
 import weddingCookies from './images/cookies-wedding.jpg'
 import weddingCookies2 from './images/cookies-wedding-2.jpg'
 import western from './images/cookies-western.jpg'
-
-
-
+import genderReveal from './images/cookies-gender-reveal.jpg'
+import tractorCookies from './images/cookies-tractor.jpg'
+import pumpkinCookies from './images/cookies-pumpkins.jpg'
+import seaShellCookies from './images/cookies-sea-shell.jpg'
 
 const DATA = {
     slideshow: [
+        {
+            src: seaShellCookies,
+            alt: 'sea shell cookies'
+        },
+        {
+            src: pumpkinCookies,
+            alt: 'pumpkin cookies'
+        },
         {
          src: weddingCake,
          alt: 'wedding cake'
@@ -71,9 +81,23 @@ const DATA = {
         {
             src: western,
             alt: 'western',
-        },        
+        },
+        {
+            src: tractorCookies,
+            alt: 'tractor cookies'
+        }       
     ],
     products: [
+        {
+            src: cocoCake,
+            alt: 'coco disney',
+            type: 'cake'
+        },
+        {
+            src: bananaCake,
+            alt: 'banana birthday cake',
+            type: 'cake'
+        },
         {
             src: weddingCake,
             alt: 'wedding cake',
@@ -150,6 +174,26 @@ const DATA = {
             type: 'cake'
         },
         //cookies
+        {
+            src: seaShellCookies,
+            alt: 'sea shell cookies',
+            type: 'cookie'
+        },
+        {
+            src: pumpkinCookies,
+            alt: 'pumpkin cookies',
+            type: 'cookie'
+        },
+        {
+            src: tractorCookies,
+            alt: 'tractor cookies',
+            type: 'cookie'
+        },       
+        {
+            src: genderReveal,
+            alt: 'gender reveal cookies',
+            type: 'cookie'
+        },
         {
             src: babyShark,
             alt: 'baby shark',

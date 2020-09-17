@@ -11,7 +11,10 @@ export default function UserInfoForm(props){
         const order = context.order
         const items = context.items
         ServiceFunctions.submitOrder(order, items, user)
-        context.clearOrder()
+        .then(res => {
+            console.log(res)
+            context.clearOrder()
+        })
         return props.history.push('/order/confirmation')
     }
 

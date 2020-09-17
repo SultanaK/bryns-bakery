@@ -16,7 +16,7 @@ export default function CookieForm(){
    return(
     <>
     {context.modal &&  <ConfirmSubmit />}
-     <form onSubmit={e => confirmSubmit(e)} className='cookie-order-form'>
+     <form onSubmit={e => confirmSubmit(e)} className='order-form'>
         <Link onClick={() => context.clearOrder()} to='/order'>Back</Link>
 
          <legend>Cookie</legend>

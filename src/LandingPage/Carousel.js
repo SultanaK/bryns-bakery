@@ -15,10 +15,17 @@ export default function Carousel(){
     }
 
     return (
+        <>
         <div className='carousel'>
         <button onClick={() => prev()}><img src={arrow} alt='next' className='prev'/></button>
-        <img className='carousel-img' src={imgArr[count].src} alt={imgArr[count].alt} />
+        <div className='flex-column'>
+            <div className='title'>
+                <h1>Order Today!</h1>
+            </div>
+            <img className='carousel-img' src={imgArr[count].src} alt={imgArr[count].alt} />
+        </div>
         <button onClick={() => next()}><img src={arrow} alt='next' className='next'/></button>
         </div>
+        </>
     )
 }

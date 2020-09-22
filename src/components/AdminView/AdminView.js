@@ -26,7 +26,6 @@ export default function AdminView(props){
         if(selected === 'new'){
             ServiceFunctions.getAllOrders()
            .then(res => {
-               console.log(res)
                if(res === undefined){
                    return setOrder([0])
                }

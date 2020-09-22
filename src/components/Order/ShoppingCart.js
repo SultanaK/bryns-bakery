@@ -25,8 +25,6 @@ export default function ShoppingCart(props){
             <ul>
                 {context.items.length === 0 ? <li>Looks like nothing is here</li> : items()}
             </ul>
-            <h3>Expected PickUp</h3>
-            <p>PickUp Date</p>
             <h3>Expected Total</h3>
             <p>*Pay At Pickup*</p>
             <h4>${total}</h4>

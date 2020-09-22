@@ -5,8 +5,9 @@ export default function OrderConfirmation(){
 
     return(
         <>
-        <p>Thank you!</p>
-        <p>If you have any questions about your order, email or contact us *here*</p>
+        <h1>Thank you!</h1>
+        <p>Your order has been placed with us!</p>
+        <p>If you have any questions about your order, please reach out at brynssweetcreations@gmail.com</p>
         </>
     )
 }

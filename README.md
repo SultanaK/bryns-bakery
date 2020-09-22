@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The link to the Live App: https://bryns-bakery.vercel.app/
+
+Bryns Sweet Creations is THE place to go for your sweet tooth. This application allows users to place orders and bakers to privately access those orders. On this application you will also find a contact and pictures of past orders Bryn's Sweet Creations has made.
+
+Login: For grading purposes the, the grader may login with username: admin password: admin
+
 
 ## Available Scripts
 

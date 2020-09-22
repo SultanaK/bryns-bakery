@@ -112,8 +112,7 @@ const ServiceFunctions = {
 
         return items
     },
-    complete(id, selected){
-        console.log(selected)
+    complete(id){
         const url = config.API_ENDPOINT + '/orders/completed'
 
         let userid = {

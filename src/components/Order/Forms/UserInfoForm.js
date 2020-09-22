@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import OrderContext from '../../../context/OrderContext'
 import ServiceFunctions from '../../../services/ServiceFunctions'
+import PropTypes from 'prop-types'
 
 export default function UserInfoForm(props){
     const context = useContext(OrderContext)
@@ -12,7 +13,6 @@ export default function UserInfoForm(props){
         const items = context.items
         ServiceFunctions.submitOrder(order, items, user)
         .then(res => {
-            console.log(res)
             context.clearOrder()
         })
         return props.history.push('/order/confirmation')
@@ -46,6 +46,9 @@ export default function UserInfoForm(props){
 )
 }
 
+UserInfoForm.propTypes = {
+    history: PropTypes.object.isRequired
+}
 //now() return time and date PG, WHERE date >= '2020-09-10' AND date <= '2020-09-15'
 //WHERE date >= now() - '3 days'::INTERVAL
 

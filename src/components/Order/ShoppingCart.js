@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import OrderContext from '../../context/OrderContext'
+import PropTypes from 'prop-types'
 
 export default function ShoppingCart(props){
     const context = useContext(OrderContext)
@@ -35,4 +36,8 @@ export default function ShoppingCart(props){
 
     </>
     )
+}
+
+ShoppingCart.propTypes = {
+    history: PropTypes.object.isRequired
 }

@@ -4,6 +4,7 @@ import DATA from '../../../services/DATA'
 import {Link} from 'react-router-dom'
 import ConfirmSubmit from '../ConfirmSubmit'
 import FormContext from '../../../context/FormContext'
+import PropTypes from 'prop-types'
 
 export default function CakeForm(props){
 
@@ -61,4 +62,9 @@ export default function CakeForm(props){
     </>
     )
 }    
+
+CakeForm.propTypes = {
+    type: PropTypes.string.isRequired,
+    history: PropTypes.object.isRequired
+}
 

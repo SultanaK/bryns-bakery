@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function OrderDetails(props){
     return(
@@ -10,4 +11,8 @@ export default function OrderDetails(props){
             <p>cost: {props.item.cost}</p>     
         </section>
     )
+}
+
+OrderDetails.propTypes = {
+    item: PropTypes.object
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import FormContext from '../../context/FormContext'
 import DATA from '../../services/DATA'
+import PropTypes from 'prop-types'
 
 export default function Order(props){
     const context = useContext(FormContext)
@@ -37,5 +38,16 @@ const OrderChoices = (props) => {
                </div>     
             </button>
     )
+}
+
+Order.propTypes = {
+    history: PropTypes.object.isRequired
+}
+
+OrderChoices.propTypes = {
+    clearOrder: PropTypes.func.isRequired,
+    updateType: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    type: PropTypes.object.isRequired
 }
     

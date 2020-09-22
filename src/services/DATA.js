@@ -330,37 +330,7 @@ const DATA = {
 
 
     ],
-    orders: [
-        {
-            orderNumber: 1,
-            name: 'John Doe',
-            email: 'johnDoe@gmail.com',
-            phone: '123-456-789',
-            readyBy: '10/28/2020',
-            order: 'cake',
-            completed: false
-        },       
-        {
-            orderNumber: 2,
-            name: 'Jane Doe',
-            email: 'janeDoe@gmail.com',
-            phone: '987-654-321',
-            readyBy: '10/29/2020',
-            order: 'cookies',
-            completed: false
-        },
-        {
-            orderNumber: 3,
-            name: 'John Smith',
-            email: 'johnSmith@gmail.com',
-            phone: '231-564-879',
-            readyBy: '9/4/2020', //new Date(year, month, day)
-            order: 'cupcakes',
-            completed: true
-        },
 
-
-    ],
     type: [
         {
             key: 'type',

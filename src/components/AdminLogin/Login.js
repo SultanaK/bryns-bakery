@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import TokenService from '../../services/token-service'
 import AuthService from '../../services/auth-api-service'
+import PropTypes from 'prop-types'
 
 export default function Login(props){
 const [error, setError] = useState(null)
@@ -49,4 +50,8 @@ const [error, setError] = useState(null)
 
         </>
     )
+}
+
+Login.propTypes = {
+	history: PropTypes.object.isRequired
 }

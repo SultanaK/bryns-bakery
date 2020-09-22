@@ -1,7 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function Table(props) {
+
     const orderValues = Object.keys(props.order)
+
     const evaluateValue = (x) => {
         if(props.order[x] === true){
             return 'true'
@@ -16,6 +19,7 @@ export default function Table(props) {
 
         return props.order[x]
     }
+
     return(
         
         <tr className='table-row' onClick={() => props.exposeOrder(props.order.id)}>
@@ -36,4 +40,14 @@ const TableBody = (props) => {
     return (
         <td>{props.value}</td> 
     )
+}
+
+Table.propTypes = {
+    order: PropTypes.object.isRequired,
+    exposeOrder: PropTypes.func.isRequired,
+    completeOrder: PropTypes.func.isRequired
+}
+
+TableBody.propTypes = {
+    value: PropTypes.string
 }

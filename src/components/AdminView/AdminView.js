@@ -3,7 +3,7 @@ import Table from './Table'
 import ServiceFunctions from '../../services/ServiceFunctions'
 import OrderDetails from './OrderDetails'
 import TokenService from '../../services/token-service'
-
+import PropTypes from 'prop-types'
 
 const TableHead = (props) => {
     return (
@@ -26,7 +26,8 @@ export default function AdminView(props){
         if(selected === 'new'){
             ServiceFunctions.getAllOrders()
            .then(res => {
-               if(res === null){
+               console.log(res)
+               if(res === undefined){
                    return setOrder([0])
                }
                return setOrder(res)
@@ -85,7 +86,7 @@ export default function AdminView(props){
                 </li>
             </ul>
         </nav>
-        <h1>Welcome Admin</h1>
+        <h1>Hey Girl</h1>
             <h2>
                {selected} Orders
             </h2>
@@ -109,4 +110,11 @@ export default function AdminView(props){
     )
 }
 
+AdminView.propTypes = {
+    history: PropTypes.object.isRequired
+}
+
+TableHead.propTypes = {
+    value: PropTypes.string
+}
 

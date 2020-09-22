@@ -1,9 +1,9 @@
 import React, {useContext} from 'react'
 import ChangeQuantity from '../ChangeQuantity';
-import DATA from '../../DATA'
+import DATA from '../../../services/DATA'
 import {Link} from 'react-router-dom'
 import ConfirmSubmit from '../ConfirmSubmit'
-import FormContext from '../../Context/FormContext'
+import FormContext from '../../../context/FormContext'
 
 export default function CakeForm(props){
 
@@ -20,7 +20,6 @@ export default function CakeForm(props){
     {context.modal &&  <ConfirmSubmit />}
 
     <form onSubmit={e => confirmSubmit(e) } className='order-form'>
-        <Link to='/order'>Back</Link>
 
         <legend>{props.type.toUpperCase()}</legend>
 
@@ -54,7 +53,10 @@ export default function CakeForm(props){
         <label htmlFor='notes'>Notes</label>
         <textarea name='notes' id='notes' form='cake-order-form' className='text-box' onChange={e => context.updateItem(e)}></textarea>
     
+    <div className='flex'>
         <input type='submit' id='cake-order-form' className='submit'/>
+        <Link className='submit back-link' to='/order'>Back</Link>
+    </div>
     </form>
     </>
     )

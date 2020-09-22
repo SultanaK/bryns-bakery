@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import FormContext from '../Context/FormContext'
-import DATA from '../DATA'
+import FormContext from '../../context/FormContext'
+import DATA from '../../services/DATA'
 
 export default function Order(props){
     const context = useContext(FormContext)

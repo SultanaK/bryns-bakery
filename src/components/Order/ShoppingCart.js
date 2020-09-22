@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import OrderContext from '../Context/OrderContext'
+import OrderContext from '../../context/OrderContext'
 
 export default function ShoppingCart(props){
     const context = useContext(OrderContext)
@@ -31,7 +31,6 @@ export default function ShoppingCart(props){
             <h4>${total}</h4>
         
         <button onClick={() => props.history.push('/order/userform')} disabled={context.items.length === 0} >Place Order</button>
-        <button>Edit Order</button>
      </section>
 
     </>

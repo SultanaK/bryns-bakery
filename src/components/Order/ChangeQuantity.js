@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import FormContext from '../Context/FormContext'
+import FormContext from '../../context/FormContext'
 
 export default function ChangeQuantity(){
     const context = useContext(FormContext)

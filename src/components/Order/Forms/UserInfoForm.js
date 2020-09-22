@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import OrderContext from '../../Context/OrderContext'
-import ServiceFunctions from '../../services/ServiceFunctions'
+import OrderContext from '../../../context/OrderContext'
+import ServiceFunctions from '../../../services/ServiceFunctions'
 
 export default function UserInfoForm(props){
     const context = useContext(OrderContext)

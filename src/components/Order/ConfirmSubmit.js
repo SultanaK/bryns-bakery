@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
-import FormContext from '../Context/FormContext'
+
+import FormContext from '../../context/FormContext'
 
 export default function ConfirmSubmit(){
     const context = useContext(FormContext)

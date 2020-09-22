@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import DATA from '../DATA';
+import DATA from '../../services/DATA';
 import ProductGrid from './ProductGrid'
 import { useSpring, animated } from 'react-spring'
+
 export default function Products(){
 
     let productsArray = DATA.products
@@ -18,6 +19,7 @@ export default function Products(){
         transform: hidden ? "translate3D(0,0,0)" : "translate3D(0,-40px,0)",
         opacity: hidden ? 1 : 0
     })
+
     const pFilter = {
         'Cakes': p => p.type === 'cake',
         'Cookies': p => p.type === 'cookie',
@@ -25,7 +27,6 @@ export default function Products(){
         'all': () => true
     };
       
-    console.log(hidden)
     return(
         <div className='goodies'>
         <section className="Modal">

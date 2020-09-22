@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import ChangeQuantity from '../ChangeQuantity'
-import DATA from '../../DATA'
+import DATA from '../../../services/DATA'
 import {Link} from 'react-router-dom'
-import FormContext from '../../Context/FormContext'
+import FormContext from '../../../context/FormContext'
 import ConfirmSubmit from '../ConfirmSubmit'
 
 export default function CookieForm(){ 

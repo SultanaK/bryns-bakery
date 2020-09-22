@@ -1,9 +1,7 @@
 import React from 'react'
-import ServiceFunctions from '../services/ServiceFunctions'
-export default function Table(props) {
 
+export default function Table(props) {
     const orderValues = Object.keys(props.order)
-    
     const evaluateValue = (x) => {
         if(props.order[x] === true){
             return 'true'
@@ -20,7 +18,7 @@ export default function Table(props) {
     }
     return(
         
-        <tr onClick={() => props.exposeOrder(props.order.id)}>
+        <tr className='table-row' onClick={() => props.exposeOrder(props.order.id)}>
             {orderValues.map((x, i) => {
                 return (
                     <TableBody key={i} 
@@ -28,7 +26,7 @@ export default function Table(props) {
                     />
                 )
             })}
-            <button onClick={() => ServiceFunctions.complete(props.order.id)}>completed</button>
+            <button disabled={props.order.completed === false ? false : true} onClick={() => props.completeOrder(props.order.id)}>completed</button>
         </tr>
     )
 }

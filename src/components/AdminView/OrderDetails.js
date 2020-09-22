@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function OrderDetails(props){
-    console.log(props)
     return(
         <section className='order-details'>
             <h2>{props.item.type}</h2>

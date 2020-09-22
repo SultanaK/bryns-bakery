@@ -1,4 +1,11 @@
 import config from '../config/config'
+import TokenService from './token-service'
+
+const headers = {
+    headers: {
+    'authorization': `bearer ${TokenService.getAuthToken()}`,
+    }
+}
 
 const ServiceFunctions = {
    submitOrder(ord, items, userInfo){
@@ -44,14 +51,15 @@ const ServiceFunctions = {
     },
     getAllOrders(){ 
         const url = config.API_ENDPOINT + '/orders'
-        const OrderData = fetch(url)
+
+        const OrderData = fetch(url, headers)
         .then(res => {
             if(!res.ok){
                 throw new Error("something went wrong")
             }
             return res.json();
         })
-        .then(data =>{
+        .then(data => {
             return data
         })
         .catch(err => "something went wrong");
@@ -60,8 +68,8 @@ const ServiceFunctions = {
     },
     getUnfinished(){
         const url = config.API_ENDPOINT + '/orders/unfinished'
-
-        const unfinishedOrders = fetch(url)
+        
+        const unfinishedOrders = fetch(url, headers)
         .then(res => {
             if(!res.ok){
                 throw new Error("something went wrong")
@@ -69,13 +77,13 @@ const ServiceFunctions = {
             return res.json()
         })
         .then(data => data)
-        .catch(err => 'something went wrong')
+        .catch(err => console.log(err))
 
         return unfinishedOrders
     },
     getCompleted(){
     const url = config.API_ENDPOINT + '/orders/completed'
-      const completedOrders = fetch(url)
+      const completedOrders = fetch(url, headers)
         .then(res => {
             if(!res.ok){
                 throw new Error('something is wrong')
@@ -90,8 +98,8 @@ const ServiceFunctions = {
     },
     getItemsInAnOrder(order_id){
         const url = config.API_ENDPOINT + '/orders/items/' + order_id
-
-        const items = fetch(url)
+        
+        const items = fetch(url, headers)
         .then(res => {
             if(!res.ok){
                 throw new Error('something went wrong') 
@@ -104,32 +112,41 @@ const ServiceFunctions = {
 
         return items
     },
-    complete(id){
+    complete(id, selected){
+        console.log(selected)
         const url = config.API_ENDPOINT + '/orders/completed'
 
         let userid = {
             "user_id": id
         }
-
-        console.log(userid)
         const options = {
             method: 'POST',
             body: JSON.stringify(userid),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             }
         }
 
-        fetch(url, options)
+       const complete = fetch(url, options)
         .then(res => {
             if(!res.ok){
                 throw new Error('something went wrong')
             }
             return res.json()
         })
-        .then(data => console.log(data))
+        .then(data => data)
         .catch(err => "something went wrong");
+
+        return complete
+    },
+    async completeOrder(id, selected){
+        const complete = await ServiceFunctions.complete(id)
+        const orders = await (selected === 'new' ? ServiceFunctions.getAllOrders() : ServiceFunctions.getUnfinished())
+
+        return orders
     }
+
 
 }
 

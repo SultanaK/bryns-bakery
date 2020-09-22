@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
-import FormContext from '../Context/FormContext'
-import OrderContext from '../Context/OrderContext'
+import FormContext from '../context/FormContext'
+import OrderContext from '../context/OrderContext'
 
 export default function FormDB(props){
     const context = useContext(OrderContext)

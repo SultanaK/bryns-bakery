@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../images/bblogo.jpg';
+import logo from '../../designs/images/bblogo.jpg';
 import Carousel from './Carousel'
 import { HiOutlineMail } from 'react-icons/hi'
 import { FaFacebookSquare, FaInstagram } from 'react-icons/fa'
@@ -23,17 +23,17 @@ export default function LandingPage(){
     <section className='window-height description'>
         <img src={logo} alt='logo' />
         <h1>About the Goods</h1>
-        <p>Home </p>
+        <p>Bryn’s Sweet Creations is a home based cottage food bakery operating in Cuero Texas.</p>
     </section>
 
     <footer>
-            <a href='#' target="_blank" className='icon' rel='noopener noreferrer'>
+            <a href='https://www.facebook.com/brynssweetcreations' target="_blank" className='icon' rel='noopener noreferrer'>
                 <FaFacebookSquare/>
             </a>
-            <a href='#' target="_blank" className='icon' rel='noopener noreferrer'>    
+            <a href='https://www.instagram.com/brynssweetcreations/?igshid=3hvtq3u76l0&fbclid=IwAR2OrZv-FPI6tzA8SENuTQB4_ZHVqrwDLOlNDGXZBLcFg3bHwLTcVyJZDJ4' target="_blank" className='icon' rel='noopener noreferrer'>    
                 <FaInstagram/>
             </a>
-            <a href='#' target="_blank" className='icon' rel='noopener noreferrer'>    
+            <a href='brynssweetcreations@gmail.com' target="_blank" className='icon' rel='noopener noreferrer'>    
                 <HiOutlineMail />
             </a>
     </footer>

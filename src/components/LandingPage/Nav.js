@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import ShoppingCart from '../images/shopping-cart.png'
 export default function Nav(){
 
     return(

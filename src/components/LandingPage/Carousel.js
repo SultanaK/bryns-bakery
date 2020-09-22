@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import DATA from '../DATA'
-import arrow from '../images/nextAndprevArrow.png'
+import DATA from '../../services/DATA'
+import arrow from '../../designs/images/nextAndprevArrow.png'
 
 export default function Carousel(){
     const imgArr = DATA.slideshow;

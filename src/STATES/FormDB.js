@@ -15,17 +15,16 @@ export default function FormDB(props){
         "cost": 0,    
 })
 
-    const changeQuantity = e => {
-        e.preventDefault()
+    const changeQuantity = (type) => {
 
         let cost
         let quantity
 
-        if(e.target.id === 'plus'){ 
+        if(type === 'plus'){ 
             quantity = item.order_specs.quantity + 0.5
         }
 
-        if(e.target.id === 'minus'){ 
+        if(type === 'minus'){ 
             if(item.order_specs.quantity === 0){
                 return null
             }

@@ -9,9 +9,9 @@ export default function OrderDB(props){
     const [user, setUser] = useState({})
 
     const deleteItem = (item) => {
-        const newOrder = [...order]
-        newOrder.splice(item, 1)
-        return setOrder(newOrder)
+        const newItem = [...items]
+        newItem.splice(item, 1)
+        return setItems(newItem)
     }
     const updateItems = (update) => {
         setItems([...items, update])

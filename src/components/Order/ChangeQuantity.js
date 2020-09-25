@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import FormContext from '../../context/FormContext'
+import {IoIosAdd, IoIosRemove} from 'react-icons/io'
 
 export default function ChangeQuantity(){
     const context = useContext(FormContext)
@@ -7,10 +8,10 @@ export default function ChangeQuantity(){
     return(
         <>
         <label htmlFor='quantity'>Quantity</label>
-         <div id='quantity' className='flex'>
-            <button id='minus' onClick={(e) => context.changeQuantity(e)}>-</button>
+         <div id='quantity' className='flex quantity'>
+            <IoIosRemove className='quantity-button' onClick={() => context.changeQuantity('minus')} />
                 <p>{context.item.order_specs.quantity === 0 ? 0 : context.item.order_specs.quantity}/dozen</p>
-            <button id='plus' onClick={(e) => context.changeQuantity(e)}>+</button>
+            <IoIosAdd className='quantity-button' onClick={() => context.changeQuantity('plus')} />
          </div>
 
         </>

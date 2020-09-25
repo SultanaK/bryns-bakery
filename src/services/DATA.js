@@ -428,6 +428,10 @@ const DATA = {
             name: '--Please Choose One--'
         },
         {
+            key: 'kid-birthday',
+            name: 'Child Birthday'
+        },
+        {
             key: 'adult-birthday',
             name: 'Adult Birthday',
         },
@@ -442,6 +446,10 @@ const DATA = {
         {
             key: 'baby-shower',
             name: 'Baby Shower',
+        },
+        {
+            key: 'halloween',
+            name: 'Halloween'
         },
         {
             key: 'easter',

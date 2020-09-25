@@ -18,31 +18,27 @@ export default function UserInfoForm(props){
         return props.history.push('/order/confirmation')
     }
 
-    // function formatDate(d) {
-    //     return `${d.getMonth()+1}/${d.getDate()/${d.getYear()}`
-    //   }
-
     return(        
-<div className='user-info'>
-    <form id='user-info' onSubmit={(e) => submitOrder(e)}>
-        <label htmlFor="first-name">First Name</label>
-        <input type='text' id='first-name' onChange={e => context.updateUser(e)} required/>
+        <div className='userForm'>
+            <form id='user-info' className='user-info-form' onSubmit={(e) => submitOrder(e)}>
+                <label htmlFor="first-name">First Name</label>
+                <input type='text' id='first-name' onChange={e => context.updateUser(e)} required/>
 
-        <label htmlFor='last-name'>Last Name</label>
-        <input type='text' id='last-name' onChange={e => context.updateUser(e)} required/>
+                <label htmlFor='last-name'>Last Name</label>
+                <input type='text' id='last-name' onChange={e => context.updateUser(e)} required/>
 
-        <label htmlFor='email'>Email</label>
-        <input type='email' id='email' onChange={e => context.updateUser(e)} required/>
+                <label htmlFor='email'>Email</label>
+                <input type='email' id='email' onChange={e => context.updateUser(e)} required/>
 
-        <label htmlFor='phone-number'>Phone Number</label>
-        <input type='tel' id='phone-number' onChange={e => context.updateUser(e)} required/>
+                <label htmlFor='phone-number'>Phone Number</label>
+                <input type='tel' id='phone-number' onChange={e => context.updateUser(e)} required/>
 
-        <label htmlFor='pickup-date'>Ready By: </label>
-        <input type='date' id='pickup-date' onChange={e => context.updateUser(e)} required/>
+                <label htmlFor='pickup-date'>Ready By: </label>
+                <input type='date' id='pickup-date' onChange={e => context.updateUser(e)} required/>
 
-        <input type='submit' id='user-info' className='submit' />
-    </form>
-</div>
+                <input type='submit' id='user-info' className='submit' />
+            </form>
+        </div>
 )
 }
 

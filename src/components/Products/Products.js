@@ -37,16 +37,16 @@ export default function Products(){
         <button className='dropdown' onClick={() => setHidden(!hidden)}>Options</button>  
         <animated.ul style={dropdown} className='dropdown-menu'>
             <li>
-                <button id='all' className={'dropdown-button'} onClick={e => changeSelected(e)}>All</button>
+                <button id='all' className='dropdown-button' onClick={e => changeSelected(e)}>All</button>
             </li>
             <li>
-                <button id='Cakes' className={'dropdown-button'} onClick={e => changeSelected(e)}>Cakes</button>
+                <button id='Cakes' className='dropdown-button' onClick={e => changeSelected(e)}>Cakes</button>
             </li>
             <li>
-                <button id='Cookies' className={'dropdown-button'} onClick={e => changeSelected(e)}>Cookies</button>
+                <button id='Cookies' className='dropdown-button' onClick={e => changeSelected(e)}>Cookies</button>
             </li>
             <li>
-                <button id='Cupcakes' className={'dropdown-button'} onClick={e => changeSelected(e)}>Cupcakes</button>
+                <button id='Cupcakes' className='dropdown-button' onClick={e => changeSelected(e)}>Cupcakes</button>
             </li>
 
         </animated.ul>

@@ -7,16 +7,17 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	/* overflow-x: hidden; */
 }
 
 @font-face{
 	font-family: 'header';
-	src: url("../../designs/fonts/FragmentCoreRom/fonts/Fragmentcore.woff")
+	src: url("../../designs/fonts/Boiling-BlackDemo/fonts/BoilingBlackDemo-jEReR.woff")
 }
 
 @font-face{
 	font-family: 'paragraph';
-	src: url("../../designs/fonts/FragmentCoreRom/fonts/Fragmentcore.woff")
+	src: url("../../designs/fonts/ChampagneLimousinesBold.woff")
 }
 
 h1, h2, h3{
@@ -61,22 +62,11 @@ p{
 }
 
 .nav{
-    display: flex;
-    flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+	display: flex;
 	margin: 0;
 	background-color: white;
-    z-index: 2;
+	z-index: 2;
 }
-
-.nav-menu{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: baseline;
-    width: 100vw;
-}
-
 
 .sticky-top{
 	position: sticky;
@@ -257,10 +247,58 @@ footer{
 /*Producat Page styling ^^^^ */
 /* Order Page*/
 
+.cake{
+	background-image: url('../../designs/images/background-cake-form.jpeg');
+	background-size: cover;
+
+}
+
+.cake-color{
+	background-color: #e3d5fbc2;
+}
+
+.cupcakes{
+	background-image: url('../../designs/images/background-photo-2.jpg');
+	background-size: cover;
+
+}
+
+.cupcakes-color{
+	background-color: #d6b8cfbe;
+}
+
+.cookies{
+	background-color: #FF9EC4;
+}
+
+.cookies-color{
+	background-color: #d6b8cfbe;
+}
+
+.cake, .cupcakes, .cookies{
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 .order-form{
 	display: flex;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
 }
+
+.quantity{
+	align-items: center;
+}
+
+.quantity-button{
+	background-color: transparent;
+	border: none;
+	font-size: 30px;
+}
+
 
 .product{
 	display: flex;
@@ -284,15 +322,6 @@ footer{
 	background-color: rgba(255, 255, 255, 0.623);
 }
 
-form{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 60vw;
-	border: 1px solid black;
-	background-color: #d1e3ef;
-}
-
 legend, label{
 	font-family: header;
 }
@@ -305,7 +334,6 @@ legend{
 	border: 1px solid black;
 	border-right: none;
 	border-left: none;
-	width: 15vw;
 	text-align: center;
 }
 
@@ -324,15 +352,26 @@ label{
     flex-direction: column;
 }
 
-.user-info{
+.userForm{
+	height: 90vh;
+	background-color: #FF9EC4;
+	padding: 30px;
+}
+
+.user-info-form{
+	margin: auto;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	border: 2px solid white;
+	border-radius: 10px;
+	width: 60vw;
 }
 
-.user-info input{
-	width: 30%;
-	margin: auto;
+.user-info-form input{
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
 }
 
 .submit{
@@ -347,7 +386,7 @@ label{
 
 .submit:hover{
 	cursor: pointer;
-	background-color: #aab9c4;
+	background-color: #9EC5FF;
 	color: white;
 }
 
@@ -355,37 +394,68 @@ label{
 	text-decoration: none;
 	color: black;
 }
-.text-box{
-	width: 20vw;
-	height: 20vh;
-}
 
 .shopping-cart{
-	border: 1px solid black;
-	width: 30vw;
 	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	padding: 10px;
+	width: 80vw;
+	border: 2px solid white;
+	border-radius: 10px;
 }
 
 .shopping-cart li{
 	list-style: none;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	text-align: left;
+	width: 50vw;
+	margin: auto;
 }
-
+.no-items p{
+	margin: auto;
+}
+.items{
+	background-color: #fdc0d9;
+}
 .confirm-submit{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 1px solid black;
-	background-color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	background-color: rgb(247, 217, 241);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.exit-button{
+	align-self: flex-end;
+	position: relative;
+	z-index: 1;
+	font-size: 40px;
+	margin: 5px;
+	border: none;
+	background-color: transparent;
+	transition-duration: 0.4s;
 }
 
-/*Cake Form */
+.confirm-buttons{
+	padding: 5px;
+	align-self: center;
+	margin: 30px;
+}
 
-
+.cart{
+	height: 85vh;
+	background-color: #FF9EC4;
+	padding: 30px;
+}
 .table-row{
 	transition-duration: 0.4s;
 }
@@ -395,13 +465,120 @@ label{
 	background-color: rgb(151, 150, 150);
 }
 
+.confirmation{
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+	background-color: #FF9EC4;
+}
+
+.confirmation h1{
+	color: white;
+}
+.confirmation-text{
+	text-align: left;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.confirmation-text p{
+	font-size: 25px;
+	line-height: 1.6;
+}
+
+.login{
+	margin: auto;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 90vh;
+	background-color: #A89EFF;
+	color: white;
+	padding: 30px;
+
+}
+.orders-nav ul{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	height: 5vh;	
+}
+.orders-nav button{
+	border: 1px solid black;
+	background-color: white;
+	padding: 5px;
+	transition-duration: 0.4s;
+}
+.orders-nav button:hover{
+	cursor: pointer;
+	background-color: #9effd8dc;
+}
+.orders{
+	border: 1px solid black;
+	margin: auto;
+	text-align: center;
+}
+.orders-table{
+	border: 1px solid black;
+	margin: auto;
+	width: 80vw;
+	height: 30vh;
+	overflow-y: hidden;
+
+}
+
+.order-items{
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 @media screen and (max-width: 500px){
 	.link{
 		font-size: 20px;
 	}
 	.nav{
-		height: 15vh;
+		position: relative;
+		z-index: 2;
+		display: flex;
+		justify-content: space-evenly;
+		height: 12vh;
 		width: 100vw;
+
+	}
+	.mobile-menu-container{		
+		width: 20vw;
+		height: 10vh;
+		align-self: center;		
+
+	}
+	.menu-icon{
+		position: absolute;
+		left: 85%;
+		transform: translateX(-15%);
+		font-size: 60px;
+		z-index: 3;
+	}
+
+	.mobile-menu{
+		position: relative;
+		top: 80px;
+		z-index: 1;
+		height: 40vh;
+		display: flex;
+		flex-direction: column;
+	}
+	.menu-button{
+		border: 1px solid white;
+		font-size: 25px;
+		padding: 5px;
+		background-color: white;
 	}
 	h1{
 		font-size: 30px;
@@ -429,7 +606,6 @@ label{
 		height: 30vh;
 		width: 33vw;
 	}
-
 	.next, .prev{
 		width: 10vw;
 		height: auto;
@@ -441,34 +617,49 @@ label{
 		align-items: center;
 		height: 10vh;
 	}
-
 	.Cake{
-		background-image: url('../../designs/images/cake-background-option.jpg');
-		background-size: cover;
-		background-position-y: center;
-		background-repeat: no-repeat;
+			background-image: url('../../designs/images/cake-background-option.jpg');
+			background-size: cover;
+			background-position-y: center;
+			background-repeat: no-repeat;
 	}
+	.Cookies{
+		background-image: url("../../designs/images/cookies-pumpkins.jpg");
+		background-position: right 50% top 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
 
-.Cookies{
-	background-image: url("../../designs/images/cookies-pumpkins.jpg");
-	background-position: right 50% top 50%;
-	background-size: cover;
-	background-repeat: no-repeat;
+	}
+	.Cupcakes{
+		background-image: url("../../designs/images/cc-background-option.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
 
-}
+	}
+	.order-option{
+		width: 50vw;
+		padding: 10px;
+		font-size: 40px;
 
-.Cupcakes{
-	background-image: url("../../designs/images/cc-background-option.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-
-}
-.order-option{
-	width: 50vw;
-	padding: 10px;
-	font-size: 40px;
-
-}
+	}
+	.order-form{
+		width: 80vw;
+	}
+	legend{
+		width: 40vw;
+	}
+	.text-box{
+		width: 40vw;
+		height: 20vh;
+	}
+	.quantity{
+		width: 40vw;
+	}
+	.confirm-submit{
+		width: 80vw;
+		height: 20vh;
+	
+	}	
 	
 }
 
@@ -478,9 +669,17 @@ label{
 		padding: 5px;
 
 	}
-
 	.nav{
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
 		height: 15vh;
+	}
+	.nav-menu{
+		display: flex;
+		justify-content: space-evenly;
+		align-items: baseline;
+		width: 100vw;
 	}
 	h1{
 		font-size: 50px;
@@ -490,8 +689,7 @@ label{
 	}
 	.textbox h1{
 		font-size: 70px;
-	}
-	
+	}	
 	.carousel-img{
 		margin: 5px;
 		width: 40vw;
@@ -549,7 +747,33 @@ label{
 	.order-option{
 		width: 30%;
 		padding: 10px;	
+	}	
+	.order-form{
+		width: 60vw;
+	}
+	legend{
+		width: 40vw;
+	}
+	.text-box{
+		width: 20vw;
+		height: 20vh;
+	}
+	.quantity{
+		width: 15vw;
+		align-items: center;
 	}
 	
-		
+	.quantity-button:hover{
+		cursor: pointer;
+	}
+	.exit-button:hover{
+		cursor: pointer;
+		transform: scale(1.2);
+	}
+	.confirm-submit{
+		width: 30vw;
+		height: 20vh;
+	}
+
+	
 }

@@ -18,8 +18,8 @@ const [error, setError] = useState(null)
 		const { username, password } = ev.target
 	
 		AuthService.postLogin({
-		  name: username.value,
-		  password: password.value
+		  name: username.value.trim(),
+		  password: password.value.trim()
 		})
 		.then(res => {
 			username.value = ''
@@ -35,16 +35,16 @@ const [error, setError] = useState(null)
 	
     return(
         <>
-	<form onSubmit={(e) => submitCredentials(e)} id='admin-login'>
+	<form onSubmit={(e) => submitCredentials(e)} className='login' id='admin-login'>
 		<h1>Admin Login</h1>
-
+		<p>If you're not Bryn, this isn't for you!</p>
 		<label htmlFor='username'>Username</label>
 		<input type='text' name='username' id='username'  required/>
 
 		<label htmlFor='password'>Password</label>
 		<input type='password' name='password' id='password'  required/>
 
-		<input type='submit' id='admin-login' />
+		<input type='submit' className='submit' id='admin-login' />
 
 	</form>
 

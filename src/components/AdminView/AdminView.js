@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Table from './Table'
 import ServiceFunctions from '../../services/ServiceFunctions'
 import OrderDetails from './OrderDetails'
@@ -13,44 +13,13 @@ const TableHead = (props) => {
 
 export default function AdminView(props){
     const [selected, setSelected] = useState('new')
-    const [order, setOrder] = useState([0])
-    const [items, setItems] = useState([0])
+    const [order, setOrder] = useState([])
+    const [items, setItems] = useState([])
 
     const exposeOrder = (id) => {
         ServiceFunctions.getItemsInAnOrder(id)
         .then(data => setItems(data))
     }
-
-
-    useEffect(() => {
-        if(selected === 'new'){
-            ServiceFunctions.getAllOrders()
-           .then(res => {
-               if(res === undefined){
-                   return setOrder([0])
-               }
-               return setOrder(res)
-            })
-        }
-        if(selected === 'finished'){
-            ServiceFunctions.getCompleted()
-            .then(res => {
-                if(res === null){
-                    return setOrder([0])
-                }
-                return setOrder(res)
-            })
-        }
-        if(selected === 'unfinished'){
-            ServiceFunctions.getUnfinished()
-            .then(res => {
-                if(res === null){
-                    return setOrder([0])
-                }
-                return setOrder(res)
-            })
-        }
-    }, [selected, setOrder])
 
     const handleLogoutClick = () => {
         TokenService.clearAuthToken()
@@ -67,9 +36,24 @@ export default function AdminView(props){
         })
     }
 
+
+    const getOrder = () => {
+        switch (selected) {
+        case 'finished':
+          return ServiceFunctions.getCompleted();
+      
+        case 'unfinished':
+          return ServiceFunctions.getUnfinished();
+      
+        default:
+          return ServiceFunctions.getAllOrders();
+        }
+      }
+
+    getOrder().then(setOrder);
     return(
         <>
-        <nav>
+        <nav className='orders-nav'>
             <ul>
                 <li >
                     <button onClick={() => setSelected('new')}>New Orders</button>
@@ -85,26 +69,30 @@ export default function AdminView(props){
                 </li>
             </ul>
         </nav>
-        <h1>Hey Girl</h1>
-            <h2>
-               {selected} Orders
-            </h2>
-        <table>
-            <thead>
-            <tr>
-                {order.length !== 0 && Object.keys(order[0]).map((x, i) => {
-                    return <TableHead key={i} value={x} />
-                })}   
-            </tr>
-            </thead>
-            <tbody>
-                {order.map((x, i) => {
-                    return <Table key={i} completeOrder={completeOrder} exposeOrder={exposeOrder} order={x} />
-                })}
-            </tbody>
-        </table>
-        <h1>Items in Order</h1>
-        {items.map((x, i) => <OrderDetails key={i} item={x} />)}
+        <section className='orders'>
+            <h1>Hey Girl</h1>
+                <h2>
+                {selected} Orders
+                </h2>
+            <table className='orders-table'>
+                <thead>
+                <tr>
+                    {order.length !== 0 && Object.keys(order[0]).map((x, i) => {
+                        return <TableHead key={i} value={x} />
+                    })}   
+                </tr>
+                </thead>
+                <tbody>
+                    {order.map((x, i) => {
+                        return <Table key={i} completeOrder={completeOrder}  exposeOrder={exposeOrder} order={x} />
+                    })}
+                </tbody>
+            </table>
+        </section>
+        <section className='order-items'>
+            <h1>Items in Order</h1>
+            {items.map((x, i) => <OrderDetails key={i} item={x} />)}     
+        </section>
         </>
     )
 }

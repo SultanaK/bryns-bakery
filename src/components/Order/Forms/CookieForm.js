@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import ChangeQuantity from '../ChangeQuantity'
 import DATA from '../../../services/DATA'
-import {Link} from 'react-router-dom'
 import FormContext from '../../../context/FormContext'
 import ConfirmSubmit from '../ConfirmSubmit'
 
-export default function CookieForm(){ 
+export default function CookieForm(props){ 
     const context = useContext(FormContext)
     
     const confirmSubmit = e => {
@@ -14,17 +13,16 @@ export default function CookieForm(){
     }
     
    return(
-    <>
+    <div className='cookies'>
     {context.modal &&  <ConfirmSubmit />}
-     <form onSubmit={e => confirmSubmit(e)} className='order-form'>
-        <Link onClick={() => context.clearOrder()} to='/order'>Back</Link>
+     <form onSubmit={e => confirmSubmit(e)} className='order-form cookies-color'>
 
          <legend>Cookie</legend>
         
         <ChangeQuantity />
 
          <label htmlFor='cookieFlavor'>Cookie Flavor</label>
-         <input type='text' id='cookieFlavor'onChange={e => context.updateItemSpecs(e)}/>
+         <input type='text' id='cookieFlavor'onChange={e => context.updateItemSpecs(e)} required/>
     
          <legend>Design</legend>
             
@@ -36,9 +34,12 @@ export default function CookieForm(){
          <label htmlFor='notes'>Notes</label>
          <textarea name='notes' id='notes' form='cookie-order-form' className='text-box' onChange={e => context.updateItem(e)}></textarea>
     
-         <input type='submit' id='cake-order-form' className='submit'/>
+         <div className='flex'>
+          <button className='submit back-link' onClick={() => props.history.push('/order')}>Back</button>
+            <input type='submit' id='cake-order-form' className='submit'/>
+         </div>
      </form>
-    </>
+    </div>
     
     )
 }

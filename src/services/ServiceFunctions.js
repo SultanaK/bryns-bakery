@@ -1,10 +1,13 @@
 import config from '../config/config'
 import TokenService from './token-service'
 
-const headers = {
-    headers: {
-    'authorization': `bearer ${TokenService.getAuthToken()}`,
+function makeHeaders(){
+   return{
+       headers: {
+           'authorization': `bearer ${TokenService.getAuthToken()}`,
+        }
     }
+       
 }
 
 const ServiceFunctions = {
@@ -52,15 +55,12 @@ const ServiceFunctions = {
     getAllOrders(){ 
         const url = config.API_ENDPOINT + '/orders'
 
-        const OrderData = fetch(url, headers)
+        const OrderData = fetch(url, makeHeaders())
         .then(res => {
             if(!res.ok){
                 throw new Error("something went wrong")
             }
             return res.json();
-        })
-        .then(data => {
-            return data
         })
         .catch(err => "something went wrong");
 
@@ -69,7 +69,7 @@ const ServiceFunctions = {
     getUnfinished(){
         const url = config.API_ENDPOINT + '/orders/unfinished'
         
-        const unfinishedOrders = fetch(url, headers)
+        const unfinishedOrders = fetch(url, makeHeaders())
         .then(res => {
             if(!res.ok){
                 throw new Error("something went wrong")
@@ -83,7 +83,7 @@ const ServiceFunctions = {
     },
     getCompleted(){
     const url = config.API_ENDPOINT + '/orders/completed'
-      const completedOrders = fetch(url, headers)
+      const completedOrders = fetch(url, makeHeaders())
         .then(res => {
             if(!res.ok){
                 throw new Error('something is wrong')
@@ -99,7 +99,7 @@ const ServiceFunctions = {
     getItemsInAnOrder(order_id){
         const url = config.API_ENDPOINT + '/orders/items/' + order_id
         
-        const items = fetch(url, headers)
+        const items = fetch(url, makeHeaders())
         .then(res => {
             if(!res.ok){
                 throw new Error('something went wrong') 
@@ -144,6 +144,9 @@ const ServiceFunctions = {
         const orders = await (selected === 'new' ? ServiceFunctions.getAllOrders() : ServiceFunctions.getUnfinished())
 
         return orders
+    },
+    capitalize(string){
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
 

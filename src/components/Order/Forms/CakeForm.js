@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
 import ChangeQuantity from '../ChangeQuantity';
 import DATA from '../../../services/DATA'
-import {Link} from 'react-router-dom'
 import ConfirmSubmit from '../ConfirmSubmit'
 import FormContext from '../../../context/FormContext'
 import PropTypes from 'prop-types'
@@ -17,10 +16,10 @@ export default function CakeForm(props){
     }
 
     return(
-    <>
+    <div className={props.type}>
     {context.modal &&  <ConfirmSubmit />}
 
-    <form onSubmit={e => confirmSubmit(e) } className='order-form'>
+    <form onSubmit={e => confirmSubmit(e) } className={`order-form ${props.type}-color`}>
 
         <legend>{props.type.toUpperCase()}</legend>
 
@@ -30,13 +29,13 @@ export default function CakeForm(props){
         {props.type === 'cupcakes' && <ChangeQuantity />}
          
         <label htmlFor='cakeFlavor'>{props.type.toUpperCase()} Flavor</label>
-        <select id='cakeFlavor' onChange={e => context.updateItemSpecs(e)} >
+        <select id='cakeFlavor' onChange={e => context.updateItemSpecs(e)} required>
             {DATA.cakeFlavors.map((x, i) => <option value={x.key}>{x.name}</option>)}
         </select>
 
         <legend>Frosting</legend>
         <label htmlFor='frostingFlavor'>Frosting Flavor</label>
-        <select id='frostingFlavor' onChange={e => context.updateItemSpecs(e)}>
+        <select id='frostingFlavor' onChange={e => context.updateItemSpecs(e)} required>
             {DATA.frostingFlavors.map((x, i) => <option value={x.key}>{x.name}</option>)}
         </select>
     
@@ -55,11 +54,11 @@ export default function CakeForm(props){
         <textarea name='notes' id='notes' form='cake-order-form' className='text-box' onChange={e => context.updateItem(e)}></textarea>
     
     <div className='flex'>
+        <button className='submit back-link' onClick={() => props.history.push('/order')}>Back</button>
         <input type='submit' id='cake-order-form' className='submit'/>
-        <Link className='submit back-link' to='/order'>Back</Link>
     </div>
     </form>
-    </>
+    </div>
     )
 }    
 

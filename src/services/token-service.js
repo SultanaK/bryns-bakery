@@ -2,13 +2,13 @@ import config from '../config/config'
 //what is local storage and why are we accessing it through window object
 const TokenService = {
   saveAuthToken(token) {
-    window.sessionStorage.setItem(config.TOKEN_KEY, token)
+   return window.sessionStorage.setItem(config.TOKEN_KEY, token)
   },
   getAuthToken() {
     return window.sessionStorage.getItem(config.TOKEN_KEY)
   },
   clearAuthToken() {
-    window.sessionStorage.removeItem(config.TOKEN_KEY)
+    return window.sessionStorage.removeItem(config.TOKEN_KEY)
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken()

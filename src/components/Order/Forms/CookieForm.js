@@ -35,8 +35,8 @@ export default function CookieForm(props){
          <textarea name='notes' id='notes' form='cookie-order-form' className='text-box' onChange={e => context.updateItem(e)}></textarea>
     
          <div className='flex'>
-          <button className='submit back-link' onClick={() => props.history.push('/order')}>Back</button>
-            <input type='submit' id='cake-order-form' className='submit'/>
+            <button className='submit back-link' onClick={() => props.history.push('/order')}>Back</button>
+            <button type='submit' id='cake-order-form' className='submit'>Submit </button>
          </div>
      </form>
     </div>

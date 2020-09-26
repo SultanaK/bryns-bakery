@@ -62,7 +62,6 @@ p{
 }
 
 .nav{
-	display: flex;
 	margin: 0;
 	background-color: white;
 	z-index: 2;
@@ -88,10 +87,11 @@ p{
 }
 
 .title{
+	display: flex;
+	align-items: center;
     position: relative;
     z-index: 2;
     text-align: center;
-    margin: 10px;
 }
 
 .intro{
@@ -401,13 +401,11 @@ label{
 }
 
 .shopping-cart{
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 10px;
-	width: 80vw;
 	border: 2px solid white;
 	border-radius: 10px;
 }
@@ -418,7 +416,6 @@ label{
 	justify-content: space-between;
 	align-items: center;
 	text-align: left;
-	width: 50vw;
 	margin: auto;
 }
 .no-items p{
@@ -459,7 +456,6 @@ label{
 .cart{
 	height: 85vh;
 	background-color: #FF9EC4;
-	padding: 30px;
 }
 .table-row{
 	transition-duration: 0.4s;
@@ -590,24 +586,17 @@ label{
 		font-size: 20px;
 	}
 	.nav{
+		display: flex;
 		position: relative;
 		z-index: 2;
-		display: flex;
-		justify-content: space-evenly;
-		height: 12vh;
+		height: 15vh;
 		width: 100vw;
-
-	}
-	.mobile-menu-container{		
-		width: 20vw;
-		height: 10vh;
-		align-self: center;		
-
+		margin: 0;
 	}
 	.menu-icon{
 		position: absolute;
-		left: 85%;
-		transform: translateX(-15%);
+		top: 50%;
+		transform: translateY(-50%);
 		font-size: 60px;
 		z-index: 3;
 	}
@@ -651,7 +640,7 @@ label{
 	}
 	.dropdown{
 		width: 20vw;
-		height: 5vh;
+		height: 10vh;
 	}
 	.item img{
 		height: 20vh;
@@ -706,9 +695,19 @@ label{
 	.quantity{
 		width: 40vw;
 	}
+	.cart{
+		padding: 10px;
+
+	}
+	.shopping-cart{
+		width: 95vw;
+	}	
+	.shopping-cart li{
+		width: 70vw;
+	}
 	.confirm-submit{
-		width: 80vw;
-		height: 20vh;
+		width: 100vw;
+		height: 30vh;
 	
 	}	
 	
@@ -721,6 +720,7 @@ label{
 
 	}
 	.nav{
+		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
@@ -826,6 +826,16 @@ label{
 		cursor: pointer;
 		transform: scale(1.2);
 	}
+	.cart{
+		padding: 30px;
+
+	}
+	.shopping-cart{
+		width: 80vw;
+	}	
+	.shopping-cart li{
+		width: 50vw;
+	}	
 	.confirm-submit{
 		width: 50vw;
 		height: 20vh;

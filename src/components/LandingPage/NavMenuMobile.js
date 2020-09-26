@@ -34,6 +34,11 @@ export default function NavMenuMobile(props){
             </li>
         </animated.ul>
         </div>
+        
+        <div className='title'>
+                <h1>Bryn's Sweet Creations</h1>
+        </div>
+
         </>
     )
 }

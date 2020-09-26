@@ -28,7 +28,7 @@ export default function CookieForm(props){
             
          <label htmlFor='theme'>Theme</label>
          <select id='theme' onChange={e => context.updateItem(e)}>
-            {DATA.themes.map((x, i) => <option value={x.key}>{x.name}</option>)}
+            {DATA.themes.map((x, i) => <option key={i} value={x.key}>{x.name}</option>)}
          </select>
     
          <label htmlFor='notes'>Notes</label>

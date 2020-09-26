@@ -195,14 +195,15 @@ footer{
 
 
 .dropdown{
-    width: 150px;
-    height: 30px;
     position: relative;
 	z-index: 1;
 	text-align: center;
     background-color: white;
     border: none;
-    transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 5px;
 }
 
 .dropdown-menu{
@@ -240,6 +241,8 @@ footer{
     display: grid;
     text-align: center;
 	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: auto;
 	border: 2px solid #FF9EC4;
@@ -644,9 +647,14 @@ label{
 	}
 	.grid{
 		width: 100vw;
+		margin-top: 20px;
+	}
+	.dropdown{
+		width: 20vw;
+		height: 5vh;
 	}
 	.item img{
-		height: 30vh;
+		height: 20vh;
 		width: 33vw;
 	}
 	.next, .prev{
@@ -742,12 +750,13 @@ label{
 		width: 25vw;
 		height: 40vh;
 	}
+
 	.grid{
 		width: 70vw;
 		padding-top: 20px;
 	}
 	.item img{
-		height: 30vh;
+		height: 35vh;
 		width: 20vw;
 	}
 	.Modal{
@@ -759,6 +768,10 @@ label{
 		width: 15vw;
 		margin-top: 20px;
 	}
+	.dropdown{
+		width: 10vw;
+		height: 5vh;
+	}	
 	.dropdown:hover{
 		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 	}
@@ -814,7 +827,7 @@ label{
 		transform: scale(1.2);
 	}
 	.confirm-submit{
-		width: 30vw;
+		width: 50vw;
 		height: 20vh;
 	}
 

@@ -34,15 +34,15 @@ function App() {
           />
         <Route 
           exact path='/order/cake'
-          children={(rProps) => <CakeForm {...rProps} type='cake'/>}
+          children={(rProps) => <CakeForm {...rProps}/>}
         />  
         <Route
           exact path='/order/cupcakes'
-          children={(rProps) => <CakeForm {...rProps} type='cupcakes'/>}
+          children={(rProps) => <CakeForm {...rProps}/>}
         />        
         <Route 
           exact path='/order/cookies'
-          children={(rProps) => <CookieForm {...rProps} type='cookies'/>}
+          children={(rProps) => <CookieForm {...rProps}/>}
         />        
         <Route 
           exact path='/order/cart' 

@@ -12,7 +12,8 @@ export default function Products(){
 
     const changeSelected = e => {
         e.preventDefault();
-        return setSelectedProduct(e.target.id)
+        setSelectedProduct(e.target.id)
+        return setHidden(false)
     }
     
     const dropdown = useSpring({

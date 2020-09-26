@@ -7,12 +7,15 @@ export default function ShoppingCart(props){
     const context = useContext(OrderContext)
     
     const items = () => {
-        return context.items.map((x, i) => 
-        <li className='shopping-cart-item'>
-        <p>{x.type}</p> {x.type === 'Cake' ? <p>1</p> : <p>{x.order_specs.quantity}/doz</p>}
-         <p>${x.cost}</p> 
-        <IoIosClose className='exit-button' onClick={() => context.deleteItem(i)}/>
-        </li>)
+        return context.items.map((x, i) => <Items 
+                                        key={i}
+                                        id={i}
+                                        type={x.type}
+                                        order_specs={x.order_specs}
+                                        cost={x.cost}
+                                        deleteItem={context.deleteItem}/>
+                                        )
+
     }
 
     const total = context.items.reduce((acc, val)=> val.cost + acc, 0);
@@ -38,6 +41,18 @@ export default function ShoppingCart(props){
     </div>
     )
 }
+
+const Items = (props) => {
+        return( 
+        <li className='shopping-cart-item'>
+            <p>{props.type}</p> {props.type.toLowerCase() === 'cake' ? <p>1</p> : <p>{props.order_specs.quantity}/doz</p>}
+            <p>${props.cost}</p> 
+            <IoIosClose className='exit-button' onClick={() => props.deleteItem(props.id)}/>
+        </li>
+        )    
+}
+
+
 
 ShoppingCart.propTypes = {
     history: PropTypes.object.isRequired

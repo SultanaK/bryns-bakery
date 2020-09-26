@@ -22,7 +22,6 @@ export default function Order(props){
 }
 
 const OrderChoices = (props) => {
-    
     const orderChoice = () => {
         props.clearOrder()
         props.updateType(props.type.name)   

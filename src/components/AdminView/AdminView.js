@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Table from './Table'
 import ServiceFunctions from '../../services/ServiceFunctions'
 import OrderDetails from './OrderDetails'
@@ -21,6 +21,22 @@ export default function AdminView(props){
         .then(data => setItems(data))
     }
 
+    useEffect(() => {
+        switch (selected) {
+            case 'finished':
+               ServiceFunctions.getCompleted().then(setOrder);
+               break;
+          
+            case 'unfinished':
+               ServiceFunctions.getUnfinished().then(setOrder);
+               break;
+          
+            default:
+               ServiceFunctions.getAllOrders().then(setOrder);
+            }
+    }, [selected, setOrder])
+
+
     const handleLogoutClick = () => {
         TokenService.clearAuthToken()
         return props.history.push('/')
@@ -36,21 +52,6 @@ export default function AdminView(props){
         })
     }
 
-
-    const getOrder = () => {
-        switch (selected) {
-        case 'finished':
-          return ServiceFunctions.getCompleted();
-      
-        case 'unfinished':
-          return ServiceFunctions.getUnfinished();
-      
-        default:
-          return ServiceFunctions.getAllOrders();
-        }
-      }
-
-    getOrder().then(setOrder);
     return(
         <>
         <nav className='orders-nav'>
@@ -69,11 +70,10 @@ export default function AdminView(props){
                 </li>
             </ul>
         </nav>
+        
         <section className='orders'>
             <h1>Hey Girl</h1>
-                <h2>
-                {selected} Orders
-                </h2>
+            <h2>{selected} Orders</h2>
             <table className='orders-table'>
                 <thead>
                 <tr>
@@ -91,7 +91,7 @@ export default function AdminView(props){
         </section>
         <section className='order-items'>
             <h1>Items in Order</h1>
-            {items.map((x, i) => <OrderDetails key={i} item={x} />)}     
+            {items.length !== 0 && items.map((x, i) => <OrderDetails key={i} item={x} />)}     
         </section>
         </>
     )

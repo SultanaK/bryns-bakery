@@ -58,7 +58,7 @@ p{
 }
 
 .link:hover{
-	color: rgb(110, 149, 175);
+	color: #A89EFF;
 }
 
 .nav{
@@ -79,7 +79,7 @@ p{
 
 .li-button:hover{
 	cursor: pointer;
-	color: rgb(110, 149, 175);
+	color: #A89EFF;
 }
 
 .window-height{
@@ -210,16 +210,16 @@ footer{
     z-index: 0;
     text-align: center;
     width: 150px;
-    background-color: rgba(255, 255, 255, 0.747);
+    background-color: #FF9EC4;
 }
 
 .dropdown-menu li{
     padding: 5px;
-    border: 1px solid #e9cdc5;
+    border: 1px solid #faf8f7;
 }
 
 .dropdown-menu li:hover{
-    background-color: #e9cdc5;
+    background-color: #fdc0d9;
 }
 
 .dropdown-button{
@@ -227,7 +227,7 @@ footer{
     background-color: transparent;
 }
 .goodies{
-    background-color: #fbddd5;  
+    background-color: white;  
     height: 100%;  
 }
 
@@ -241,7 +241,9 @@ footer{
     text-align: center;
 	margin: auto;
 	grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+	grid-template-rows: auto;
+	border: 2px solid #FF9EC4;
+	border-radius: 10px;
 }
 
 /*Producat Page styling ^^^^ */
@@ -462,7 +464,8 @@ label{
 
 .table-row:hover{
 	cursor: pointer;
-	background-color: rgb(151, 150, 150);
+	background-color: #fdc0d9;
+	color: white;
 }
 
 .confirmation{
@@ -491,15 +494,19 @@ label{
 
 .login{
 	margin: auto;
-	border: 1px solid black;
+	border: 2px solid #A89EFF;
+	width: 50vw;
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 90vh;
-	background-color: #A89EFF;
-	color: white;
+	background-color: white;
+	color: black;
 	padding: 30px;
 
+}
+.orders-nav{
+	padding: 30px;
 }
 .orders-nav ul{
 	display: flex;
@@ -509,22 +516,26 @@ label{
 	height: 5vh;	
 }
 .orders-nav button{
-	border: 1px solid black;
+	border: 2px solid #A89EFF;
 	background-color: white;
+	margin: 2px;
 	padding: 5px;
 	transition-duration: 0.4s;
 }
 .orders-nav button:hover{
 	cursor: pointer;
-	background-color: #9effd8dc;
+	background-color: #A89EFF;
+	color: white;
 }
 .orders{
-	border: 1px solid black;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 .orders-table{
-	border: 1px solid black;
+	border: 2px solid #A89EFF;
+	border-radius: 10px;
+	padding: 20px;
 	margin: auto;
 	width: 80vw;
 	height: 30vh;
@@ -533,12 +544,44 @@ label{
 }
 
 .order-items{
-	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+.table-row button{
+	border: 1px solid #FF9EC4;
+	border-radius: 3px;;
+	background-color: white;
+	transition-duration: 0.4s;
+	padding: 5px;
+}
+
+.table-row button:hover{
+	cursor: pointer;
+	background-color: #FF9EC4;
+	color: white
+}
+
+.order-details{
+	border: 1px solid black;
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+}
+
+.error{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #fdc0d9;
+	border-radius: 10px;
+	background-color: white;
+	padding: 10px;
+}
 @media screen and (max-width: 500px){
 	.link{
 		font-size: 20px;

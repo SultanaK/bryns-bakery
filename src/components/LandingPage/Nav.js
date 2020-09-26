@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import withSizes from 'react-sizes'
 import NavMenuMobile from './NavMenuMobile'
+import TokenService from '../../services/token-service'
 
 function Nav({ isMobile }){
+    const [hasToken, setToken] = useState(TokenService.hasAuthToken())
 
     return(
         <nav className='sticky-top nav'>
         <div className='title'>
                 <h1>Bryn's Sweet Creations</h1>
         </div>
-            { isMobile ? <NavMenuMobile /> : <NavDesktopMenu /> }
+            { isMobile ? <NavMenuMobile token={hasToken} /> : <NavDesktopMenu token={hasToken} /> }
         </nav>
     )
 }
@@ -19,7 +21,8 @@ const mapSizesToProps = ({ width }) => ({
     isMobile: width <= 500,
 })
 
-const NavDesktopMenu = () => {
+
+const NavDesktopMenu = (props) => {
     return (
     <ul className='nav-menu'>
         <li className='li-button'><Link to='/' className='link'>Home</Link></li> 
@@ -30,7 +33,7 @@ const NavDesktopMenu = () => {
                 Shopping Cart
             </Link>
         </li>
-        <li className='li-button'><Link to='/login' className='link'>SignIn</Link></li>
+    <li className='li-button'><Link to='/login' className='link'>{ props.token ? 'Account' : 'SignIn'}</Link></li>
     </ul>
     )
 }

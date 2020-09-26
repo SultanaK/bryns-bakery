@@ -5,7 +5,7 @@ import AdminView from '../AdminView/AdminView';
 import Login from '../AdminLogin/Login'
 import Order from '../Order/Order';
 import Products from '../Products/Products';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Nav from '../LandingPage/Nav'
 import CakeForm from '../Order/Forms/CakeForm'
 import CookieForm from '../Order/Forms/CookieForm'
@@ -13,6 +13,7 @@ import ShoppingCart from '../Order/ShoppingCart'
 import UserInfoForm from '../Order/Forms/UserInfoForm'
 import OrderConfirmation from '../Order/OrderConfirmation';
 import PrivateRoute from '../PrivateRoute'
+import TokenService from '../../services/token-service';
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
           children={r => <OrderConfirmation {...r}/>}/>
         <Route 
           exact path='/login' 
-          children = {(rProps) => <Login {...rProps}/>}/>
+          children = {(rProps) => TokenService.hasAuthToken() ? <Redirect to='/adminView'/> : <Login {...rProps}/>}/>
         <PrivateRoute 
           exact path='/adminView'
           component = {AdminView}

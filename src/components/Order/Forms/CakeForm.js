@@ -25,7 +25,7 @@ export default function CakeForm(props){
         {context.item.type === 'Cake' && <label htmlFor='servingSize'>Serving-size</label>}
         {context.item.type === 'Cake' && <input type='number' id='servingSize' onChange={e => context.updateItemSpecs(e)} required/>}  
 
-        {context.item.type === 'cupcakes' && <ChangeQuantity />}
+        {context.item.type === 'Cupcakes' && <ChangeQuantity />}
          
         <label htmlFor='cakeFlavor'>{context.item.type} Flavor</label>
         <select id='cakeFlavor' onChange={e => context.updateItemSpecs(e)} required>

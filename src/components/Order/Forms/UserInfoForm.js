@@ -35,8 +35,9 @@ export default function UserInfoForm(props){
 
                 <label htmlFor='pickup-date'>Ready By: </label>
                 <input type='date' id='pickup-date' onChange={e => context.updateUser(e)} required/>
-
-                <input type='submit' id='user-info' className='submit' />
+            <div className='flex-column'>
+                <button type='submit' id='user-info' className='submit'>Submit </button>
+            </div>
             </form>
         </div>
 )

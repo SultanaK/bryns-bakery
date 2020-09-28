@@ -58,7 +58,7 @@ p{
 }
 
 .link:hover{
-	color: #A89EFF;
+	color: #FF9EC4;
 }
 
 .nav{
@@ -78,7 +78,7 @@ p{
 
 .li-button:hover{
 	cursor: pointer;
-	color: #A89EFF;
+	color: #FF9EC4;
 }
 
 .window-height{
@@ -131,7 +131,7 @@ p{
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
-	background-color: #e7cadc;
+	background-color: #fdc0d9;
 
 }
 
@@ -140,24 +140,17 @@ p{
 
 }
 
-.next{
-	transform: rotate(270deg);
+.arrow{
+	font-size: 60px;
+	color: white;
 	transition-duration: 0.4s;
 }
 
-.next:hover{
+.arrow:hover{
 	cursor: pointer;
-	transform: scale(1.2) rotate(270deg);
-}
-.prev{
-	transform: rotate(90deg);
-	transition-duration: 0.4s;
+	transform: scale(1.2);
 }
 
-.prev:hover{
-	cursor: pointer;
-	transform: scale(1.2) rotate(90deg);
-}
 
 .description{
 	text-align: center;
@@ -186,7 +179,7 @@ footer{
 
 .icon:hover{
 	cursor: pointer;
-	color: #e7cadc;
+	color: #FF9EC4;
 }
 
 /*Landing Page styling ^^^^ */
@@ -203,7 +196,7 @@ footer{
 	transition-duration: 0.4s;
 	border: 1px solid black;
 	border-radius: 3px;
-	padding: 5px;
+	padding: 10px;
 }
 
 .dropdown-menu{
@@ -354,7 +347,12 @@ label{
 
 .flex-column{
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	align-items: center;
+}
+
+.flex-column .title{
+	color: white;
 }
 
 .userForm{
@@ -370,7 +368,6 @@ label{
 	text-align: center;
 	border: 2px solid white;
 	border-radius: 10px;
-	width: 60vw;
 }
 
 .user-info-form input{
@@ -626,9 +623,10 @@ label{
 	}
 	
 	.carousel-img{
-		margin: 5px;
+		margin-top: 20px;
 		width: 70vw;
-		height: 50vh;
+		height: 40vh;
+
 	}	
 	.description img{
 		width: 60vw;
@@ -640,7 +638,7 @@ label{
 	}
 	.dropdown{
 		width: 20vw;
-		height: 10vh;
+		height: auto;
 	}
 	.item img{
 		height: 20vh;
@@ -710,6 +708,9 @@ label{
 		height: 30vh;
 	
 	}	
+	.user-info-form{
+		width: 80vw;
+	}
 	
 }
 
@@ -841,5 +842,7 @@ label{
 		height: 20vh;
 	}
 
-	
+	.user-info-form{
+		width: 60vw;
+	}
 }

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import DATA from '../../services/DATA'
-import arrow from '../../designs/images/nextAndprevArrow.png'
-
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 export default function Carousel(){
     const imgArr = DATA.slideshow;
     const [count, setCount] = useState(0)
@@ -17,14 +16,14 @@ export default function Carousel(){
     return (
         <>
         <div className='carousel'>
-        <button onClick={() => prev()}><img src={arrow} alt='next' className='prev'/></button>
+        <IoIosArrowBack onClick={() => prev()} className='arrow'/>
         <div className='flex-column'>
             <div className='title'>
                 <h1>Order Today!</h1>
             </div>
             <img className='carousel-img' src={imgArr[count].src} alt={imgArr[count].alt} />
         </div>
-        <button onClick={() => next()}><img src={arrow} alt='next' className='next'/></button>
+        <IoIosArrowForward onClick={() => next()} className='arrow'/>
         </div>
         </>
     )
